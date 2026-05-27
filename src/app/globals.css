@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
+  --font-hand: var(--font-patrick), "Segoe Print", cursive;
+
+  --color-stripe-blue: #b8d4ea;
+  --color-stripe-blue-deep: #a8c8e2;
+  --color-stripe-cream: #f7f2e8;
+  --color-stripe-cream-warm: #efe9dc;
+  --color-note-white: #fffef8;
+  --color-note-yellow: #fff0b0;
+  --color-note-yellow-deep: #f5e49a;
+  --color-note-pink: #f8c4d4;
+  --color-note-pink-deep: #f0b0c4;
+  --color-tape-pink: #f2a0b4;
+  --color-tape-yellow: #f0d060;
+  --color-ink: #1a1a1a;
+  --color-muted: #3d3d3d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-stripe-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-note-pink);
+  color: var(--color-ink);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-hand {
+  font-family: var(--font-hand);
+}
+
+/* Matte vertical stripes — each band has subtle depth */
+.striped-bg {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-stripe-blue) 0px,
+    var(--color-stripe-blue-deep) 24px,
+    var(--color-stripe-blue) 48px,
+    var(--color-stripe-cream) 48px,
+    var(--color-stripe-cream-warm) 72px,
+    var(--color-stripe-cream) 96px
+  );
+}
+
+/* Matte paper surfaces */
+.matte-paper {
+  background: linear-gradient(
+    168deg,
+    #fffffe 0%,
+    var(--color-note-white) 40%,
+    #f8f5ee 100%
+  );
+}
+
+.matte-pink {
+  background: linear-gradient(
+    165deg,
+    #fce8ef 0%,
+    var(--color-note-pink) 50%,
+    var(--color-note-pink-deep) 100%
+  );
+}
+
+.matte-yellow {
+  background: linear-gradient(
+    165deg,
+    #fff8d8 0%,
+    var(--color-note-yellow) 50%,
+    var(--color-note-yellow-deep) 100%
+  );
+}
+
+/* Legacy scalloped — kept for small labels */
+.scalloped-bubble {
+  border-radius: 50% 50% 45% 45% / 40% 40% 55% 55%;
+}
+
+.note-torn {
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 92%,
+    95% 96%,
+    88% 93%,
+    80% 97%,
+    72% 94%,
+    64% 98%,
+    56% 95%,
+    48% 99%,
+    40% 94%,
+    32% 97%,
+    24% 93%,
+    16% 98%,
+    8% 95%,
+    0% 100%
+  );
+  box-shadow: 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.note-dashed {
+  border-style: dashed;
+  border-width: 2px;
+  box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Stitched inner border on notes */
+.note-stitched::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1.5px dashed rgba(26, 26, 26, 0.18);
+  pointer-events: none;
+}
+
+.nav-tab {
+  border: 2px solid var(--color-ink);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-tab:hover {
+  transform: translateY(-2px) rotate(-1deg);
+  box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.12);
+}
+
+.nav-tab-active {
+  transform: translateY(-3px) rotate(1deg);
+  box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.14);
+}
