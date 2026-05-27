@@ -92,7 +92,7 @@ export function PinkBlob({ children, className = "", size = "default" }: PinkBlo
       <div
         className={`absolute inset-0 flex flex-col items-center justify-center text-center ${
           size === "hero-xl"
-            ? "px-12 pb-4 pt-4 sm:px-14"
+            ? "px-14 pb-5 pt-5 sm:px-16"
             : size === "hero-lg"
               ? "px-10 pb-3 pt-3 sm:px-12"
               : "px-8 pb-2 pt-2"

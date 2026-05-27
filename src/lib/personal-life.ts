@@ -15,38 +15,41 @@ export type PersonalPin = {
 export const personalLifePins: PersonalPin[] = [
   {
     id: "hackathon-presentation",
-    title: "Your moment",
-    caption: "Upload a photo and write a short caption about this memory.",
+    image: "/images/personal/personal-1.png",
     tall: true,
   },
   {
     id: "hackathon-team",
-    title: "Friends & fun",
-    caption: "Add a group shot (or text-only note) from a weekend or event.",
+    image: "/images/personal/personal-2.png",
     tall: false,
   },
   {
     id: "linkedin-empire-state",
-    title: "Explore",
-    caption: "A place you visited — short and sweet!",
+    image: "/images/personal/personal-3.png",
     tall: true,
   },
   {
     id: "microsoft-cube",
-    title: "Cozy corner",
-    caption: "A vibe: study spot, café, home feeling, anything personal.",
+    image: "/images/personal/personal-4.png",
     tall: true,
   },
   {
-    id: "pin-text-1",
-    title: "A thought",
-    caption: "Quotes, notes, or a tiny takeaway you want to remember.",
+    id: "pin-img-5",
+    image: "/images/personal/personal-5.png",
     tall: false,
   },
   {
-    id: "pin-text-2",
-    title: "What I’m into",
-    caption: "A hobby, playlist, book, recipe, or “currently loving” moment.",
+    id: "pin-img-6",
+    image: "/images/personal/personal-6.png",
+    tall: true,
+  },
+  {
+    id: "pin-img-7",
+    image: "/images/personal/personal-7.png",
     tall: false,
+  },
+  {
+    id: "coming-soon",
+    title: "More coming soon…",
   },
 ];

@@ -13,6 +13,7 @@ type PinCardProps = {
 
 export function PinCard({ pin, index }: PinCardProps) {
   const hasImage = Boolean(pin.image);
+  const hasText = Boolean(pin.title || pin.caption);
   const rotation = index % 3 === 0 ? -0.6 : index % 3 === 1 ? 0.5 : -0.3;
 
   return (
@@ -45,16 +46,20 @@ export function PinCard({ pin, index }: PinCardProps) {
               pin.tall ? "min-h-[220px]" : "min-h-[140px]"
             }`}
           >
-            <span className="text-3xl opacity-80" aria-hidden>
-              📌
-            </span>
-            <p className="mt-2 font-hand text-xs text-[var(--color-muted)]">
-              your photo here
-            </p>
+            {!hasText && (
+              <>
+                <span className="text-3xl opacity-80" aria-hidden>
+                  📌
+                </span>
+                <p className="mt-2 font-hand text-xs text-[var(--color-muted)]">
+                  your photo here
+                </p>
+              </>
+            )}
           </div>
         )}
 
-        {(pin.title || pin.caption) && (
+        {hasText && (
           <div className="px-3.5 py-3 sm:px-4 sm:py-3.5">
             {pin.title && (
               <h3 className="font-display text-sm font-bold leading-snug text-[var(--color-ink)] sm:text-base">
