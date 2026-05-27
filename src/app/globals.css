@@ -18,6 +18,12 @@
   --color-tape-yellow: #f0d060;
   --color-ink: #1a1a1a;
   --color-muted: #3d3d3d;
+  --color-border-soft: rgba(50, 48, 55, 0.16);
+  --radius-soft: 1.25rem;
+  --radius-soft-sm: 0.875rem;
+  --radius-pill: 9999px;
+  --radius-pin: 1.5rem;
+  --color-pin-bg: #f5f0ea;
 }
 
 * {
@@ -48,7 +54,16 @@ body {
   font-family: var(--font-hand);
 }
 
-/* Matte vertical stripes — each band has subtle depth */
+.border-soft {
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-soft);
+}
+
+.border-soft-dashed {
+  border: 1px dashed var(--color-border-soft);
+  border-radius: var(--radius-soft);
+}
+
 .striped-bg {
   background: repeating-linear-gradient(
     90deg,
@@ -61,7 +76,6 @@ body {
   );
 }
 
-/* Matte paper surfaces */
 .matte-paper {
   background: linear-gradient(
     168deg,
@@ -89,11 +103,6 @@ body {
   );
 }
 
-/* Legacy scalloped — kept for small labels */
-.scalloped-bubble {
-  border-radius: 50% 50% 45% 45% / 40% 40% 55% 55%;
-}
-
 .note-torn {
   clip-path: polygon(
     0% 0%,
@@ -113,36 +122,100 @@ body {
     8% 95%,
     0% 100%
   );
-  box-shadow: 2px 4px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 1px 3px 0 rgba(0, 0, 0, 0.05);
 }
 
 .note-dashed {
-  border-style: dashed;
-  border-width: 2px;
-  box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.06);
+  border: 1px dashed var(--color-border-soft);
+  border-radius: var(--radius-soft);
+  box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.04);
 }
 
-/* Stitched inner border on notes */
+.note-stitched {
+  border-radius: var(--radius-soft);
+}
+
 .note-stitched::before {
   content: "";
   position: absolute;
-  inset: 6px;
-  border: 1.5px dashed rgba(26, 26, 26, 0.18);
+  inset: 8px;
+  border: 1px dashed var(--color-border-soft);
+  border-radius: calc(var(--radius-soft) - 4px);
   pointer-events: none;
 }
 
 .nav-tab {
-  border: 2px solid var(--color-ink);
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-soft);
+  box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .nav-tab:hover {
   transform: translateY(-2px) rotate(-1deg);
-  box-shadow: 3px 4px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.08);
 }
 
 .nav-tab-active {
   transform: translateY(-3px) rotate(1deg);
-  box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.14);
+  box-shadow: 2px 4px 0 rgba(0, 0, 0, 0.09);
+}
+
+/* Hero: cloud + polaroids share one row height on md+ */
+@media (min-width: 768px) {
+  .hero-matched-row {
+    min-height: clamp(220px, 30vw, 300px);
+  }
+}
+
+/* Pinterest-style Personal Life board */
+.pin-board-shell {
+  border-radius: var(--radius-pin);
+  background: var(--color-pin-bg);
+  border: 1px solid var(--color-border-soft);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  padding: 1rem 1rem 1.25rem;
+  max-height: min(72vh, 720px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pin-board-shell::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pin-board-shell::-webkit-scrollbar-thumb {
+  background: var(--color-note-pink);
+  border-radius: var(--radius-pill);
+}
+
+.pin-board-shell::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.pinterest-masonry {
+  column-count: 2;
+  column-gap: 0.875rem;
+}
+
+@media (min-width: 640px) {
+  .pinterest-masonry {
+    column-count: 3;
+    column-gap: 1rem;
+  }
+}
+
+.pin-card-inner {
+  border-radius: var(--radius-pin);
+}
+
+.pin-placeholder {
+  background: linear-gradient(
+    145deg,
+    #fffef9 0%,
+    var(--color-note-pink) 45%,
+    var(--color-note-yellow) 100%
+  );
 }

@@ -1,77 +1,105 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { StickyNote } from "@/components/scrapbook/StickyNote";
-import { StarDoodle } from "@/components/scrapbook/Doodles";
+import { PinkBlob } from "@/components/scrapbook/PinkBlob";
 import { LabelTag } from "@/components/scrapbook/LabelTag";
 
-const features = [
+const changeFeatures = [
   {
-    title: "Dev environment",
-    description: "Editor setup, themes, extensions, and workflow tweaks you swear by.",
+    title: "Apple Emojis Keyboard on MacBook",
+    body: "Disappears after one click. It should stay longer so people can spam/try more — WhatsApp already does this on desktop.",
   },
   {
-    title: "Stack & tools",
-    description: "Frameworks, CLIs, and services you reach for when building.",
+    title: "Email: rename attachment (per email)",
+    body: "I don’t need to rename the real file—just the name for that one email. Imagine if they allowed it while sending.",
   },
   {
-    title: "Cool discoveries",
-    description: "Libraries, APIs, or hacks worth sharing with fellow builders.",
+    title: "LinkedIn: experiences by preference",
+    body: "Could LinkedIn let us display experiences based on our preferences (not strictly chronological)? What do you think?",
   },
+] as const;
+
+const loveFeatures = [
   {
-    title: "Hot takes",
-    description: "Opinions on tech trends, productivity, or how you like to work.",
+    title: "Apple motion detection cues",
+    body: "Those subtle “something moved” cues. Love how they make the experience feel aware without being distracting.",
   },
-];
+] as const;
 
 export function GeekOutSection() {
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap items-center gap-3">
-        <LabelTag className="!px-5 !py-2 !text-lg">Geek Out ★</LabelTag>
-        <StarDoodle size={36} filled />
-        <StarDoodle size={24} className="mt-2" />
+      <div className="relative mx-auto w-full max-w-[820px]">
+        <PinkBlob size="hero-xl">
+          <span className="font-display text-[2.35rem] font-bold leading-none tracking-tight text-[var(--color-ink)] sm:text-[2.8rem]">
+            Features!
+          </span>
+        </PinkBlob>
       </div>
 
-      <p className="font-hand text-sm text-[var(--color-muted)]">
-        Features, tools, and rabbit holes — the fun technical stuff.
-      </p>
-
-      <div className="grid gap-3 sm:grid-cols-2">
-        {features.map((feature, i) => (
-          <motion.div
-            key={feature.title}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.08, duration: 0.35 }}
-          >
-            <StickyNote
-              color={i % 2 === 0 ? "white" : "yellow"}
-              variant="dashed"
-              className="!p-4"
-            >
-              <LabelTag color="pink" className="mb-2 !text-xs">
-                {feature.title}
-              </LabelTag>
-              <p className="font-hand text-sm leading-relaxed text-[var(--color-muted)]">
-                {feature.description}
-              </p>
-            </StickyNote>
-          </motion.div>
-        ))}
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.35 }}
-        className="matte-paper relative border-2 border-dashed border-[var(--color-ink)] px-5 py-4"
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        className="font-hand text-sm leading-relaxed text-[var(--color-muted)]"
       >
-        <StarDoodle className="absolute -right-2 -top-3" size={28} filled />
-        <p className="font-hand text-sm font-medium text-[var(--color-muted)]">
-          Your turn: dotfiles, favorite repos, or a &quot;uses&quot; list →
-        </p>
-      </motion.div>
+        Below: I am obsessed with features and always love discovering them,
+        tell me if u also love any of these or have any thoughts on these : D
+      </motion.p>
+
+      <div className="space-y-3">
+        <LabelTag color="pink" className="!px-5 !py-2 !text-lg">
+          Features I’d like to change
+        </LabelTag>
+
+        <div className="grid gap-3 sm:grid-cols-2">
+          {changeFeatures.map((f, i) => (
+            <motion.div
+              key={f.title}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.05, duration: 0.35 }}
+            >
+              <div
+                className={`matte-paper border-soft rounded-[var(--radius-soft)] p-4 shadow-[2px_3px_0_rgba(0,0,0,0.05)] ${
+                  i % 2 === 0
+                    ? "bg-[var(--color-note-white)]/75"
+                    : "bg-[var(--color-note-yellow)]/60"
+                }`}
+              >
+                <p className="font-display text-sm font-bold">{f.title}</p>
+                <p className="mt-2 font-hand text-sm leading-relaxed text-[var(--color-muted)]">
+                  {f.body}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-3">
+        <LabelTag color="yellow" className="!px-5 !py-2 !text-lg">
+          Features I recently discovered / currently love
+        </LabelTag>
+
+        <div className="grid gap-3">
+          {loveFeatures.map((f) => (
+            <motion.div
+              key={f.title}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+            >
+              <div className="matte-paper border-soft rounded-[var(--radius-soft)] p-4 shadow-[2px_3px_0_rgba(0,0,0,0.05)] bg-[var(--color-note-pink)]/25">
+                <p className="font-display text-sm font-bold">{f.title}</p>
+                <p className="mt-2 font-hand text-sm leading-relaxed text-[var(--color-muted)]">
+                  {f.body}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

@@ -5,14 +5,18 @@ import { motion } from "framer-motion";
 type PinkBlobProps = {
   children: React.ReactNode;
   className?: string;
-  size?: "hero" | "default";
+  size?: "hero" | "hero-lg" | "hero-xl" | "default";
 };
 
 export function PinkBlob({ children, className = "", size = "default" }: PinkBlobProps) {
   const dimensions =
-    size === "hero"
-      ? "w-full max-w-[min(100%,520px)]"
-      : "w-full max-w-[320px]";
+    size === "hero-xl"
+      ? "w-full max-w-[min(100%,760px)]"
+      : size === "hero-lg"
+        ? "w-full max-w-[min(100%,680px)]"
+        : size === "hero"
+          ? "w-full max-w-[min(100%,520px)]"
+          : "w-full max-w-[320px]";
 
   return (
     <motion.div
@@ -23,7 +27,7 @@ export function PinkBlob({ children, className = "", size = "default" }: PinkBlo
     >
       <svg
         viewBox="0 0 520 220"
-        className="h-auto w-full drop-shadow-[0_6px_0_rgba(26,26,26,0.12)]"
+        className="h-auto w-full drop-shadow-[0_4px_0_rgba(26,26,26,0.06)]"
         aria-hidden
       >
         <defs>
@@ -50,8 +54,8 @@ export function PinkBlob({ children, className = "", size = "default" }: PinkBlo
              C 198 198, 148 182, 98 188
              C 58 192, 42 158, 42 118 Z"
           fill="url(#pinkMatte)"
-          stroke="#1a1a1a"
-          strokeWidth="3.5"
+          stroke="rgba(50, 48, 55, 0.35)"
+          strokeWidth="2"
           strokeLinejoin="round"
         />
         <path
@@ -85,7 +89,15 @@ export function PinkBlob({ children, className = "", size = "default" }: PinkBlo
         />
       </svg>
 
-      <div className="absolute inset-0 flex flex-col items-center justify-center px-8 pb-2 pt-2 text-center">
+      <div
+        className={`absolute inset-0 flex flex-col items-center justify-center text-center ${
+          size === "hero-xl"
+            ? "px-12 pb-4 pt-4 sm:px-14"
+            : size === "hero-lg"
+              ? "px-10 pb-3 pt-3 sm:px-12"
+              : "px-8 pb-2 pt-2"
+        }`}
+      >
         {children}
       </div>
     </motion.div>

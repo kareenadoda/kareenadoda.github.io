@@ -21,8 +21,9 @@ const patrickHand = Patrick_Hand({
 });
 
 export const metadata: Metadata = {
-  title: "Kareena — Personal Site",
-  description: "About me, projects, interests, and geeking out.",
+  title: "Kareena Vijay Doda",
+  description:
+    "Portfolio of Kareena Vijay Doda — CS @ Rutgers, Amazon SDE Intern, projects & experience.",
 };
 
 export default function RootLayout({

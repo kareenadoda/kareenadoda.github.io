@@ -5,8 +5,9 @@ import { sections, type SectionId } from "@/lib/sections";
 
 const tabMatte: Record<SectionId, string> = {
   about: "matte-yellow",
+  experience: "matte-pink",
   projects: "matte-paper bg-[var(--color-note-white)]",
-  interests: "matte-pink",
+  "personal-life": "matte-paper bg-[var(--color-note-white)]",
   "geek-out": "matte-yellow",
 };
 
@@ -28,7 +29,7 @@ export function Navigation({ active, onChange }: NavigationProps) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45 + i * 0.06 }}
-            className={`nav-tab relative border-2 border-[var(--color-ink)] px-4 py-2.5 font-display text-sm font-semibold sm:px-5 sm:text-base ${tabMatte[section.id]} ${
+            className={`nav-tab relative px-4 py-2.5 font-display text-sm font-semibold sm:px-5 sm:text-base ${tabMatte[section.id]} ${
               isActive ? "nav-tab-active" : ""
             }`}
             style={{

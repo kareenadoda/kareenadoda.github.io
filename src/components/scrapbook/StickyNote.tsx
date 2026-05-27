@@ -46,11 +46,11 @@ export function StickyNote({
       ? "note-torn"
       : variant === "dashed"
         ? "note-dashed"
-        : "shadow-[2px_3px_0_rgba(0,0,0,0.1)]";
+        : "shadow-[1px_2px_0_rgba(0,0,0,0.05)]";
 
   return (
     <motion.div
-      className={`note-stitched relative border-2 border-[var(--color-ink)] p-5 sm:p-6 ${matteClasses[color]} ${variantClass} ${className}`}
+      className={`note-stitched border-soft relative p-5 sm:p-6 ${matteClasses[color]} ${variantClass} ${className}`}
       whileHover={
         hoverWiggle
           ? { rotate: [-0.5, 0.5, -0.3, 0], transition: { duration: 0.4 } }

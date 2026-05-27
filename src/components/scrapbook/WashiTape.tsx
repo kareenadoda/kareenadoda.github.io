@@ -46,7 +46,7 @@ export function WashiTape({
 
   return (
     <span
-      className={`absolute z-20 block h-7 w-16 rounded-[2px] shadow-sm ${className}`}
+      className={`absolute z-20 block h-7 w-16 rounded-md shadow-sm ${className}`}
       style={{
         transform: `rotate(${rotation}deg)`,
         ...styles[resolved],
