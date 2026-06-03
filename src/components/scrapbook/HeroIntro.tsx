@@ -15,10 +15,10 @@ export function HeroIntro() {
             <div className="relative w-full">
               <WashiTape
                 variant="white"
-                className="absolute -right-1 top-5 z-30 w-[4.5rem]"
+                className="absolute -right-1 top-5 z-30 w-[4.5rem] translate-x-[10%]"
                 rotation={6}
               />
-              <PinkBlob size="hero-xl">
+              <PinkBlob size="hero-xxl">
                 <motion.span
                   className="font-hand text-2xl text-[var(--color-ink)]/90 sm:text-3xl"
                   initial={{ opacity: 0 }}
@@ -28,7 +28,7 @@ export function HeroIntro() {
                   Hello, I&apos;m
                 </motion.span>
                 <motion.span
-                  className="font-display text-5xl font-bold leading-none tracking-tight text-[var(--color-ink)] sm:text-6xl md:text-7xl lg:text-8xl"
+                  className="max-w-full font-display text-4xl font-bold leading-none tracking-tight text-[var(--color-ink)] sm:text-5xl md:text-6xl lg:text-7xl"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.25, type: "spring", stiffness: 200 }}
@@ -60,8 +60,8 @@ export function HeroIntro() {
               tapeVariant="white"
               priority
               aspect="portrait"
-              imageScale={1.38}
-              objectPosition="center 22%"
+              imageScale={1.78}
+              objectPosition="center 44%"
               matchRowHeight
             />
           </div>

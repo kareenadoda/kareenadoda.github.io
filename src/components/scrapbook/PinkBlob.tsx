@@ -5,31 +5,42 @@ import { motion } from "framer-motion";
 type PinkBlobProps = {
   children: React.ReactNode;
   className?: string;
-  size?: "hero" | "hero-lg" | "hero-xl" | "default";
+  size?: "hero" | "hero-lg" | "hero-xl" | "hero-xxl" | "default";
 };
 
 export function PinkBlob({ children, className = "", size = "default" }: PinkBlobProps) {
   const dimensions =
-    size === "hero-xl"
-      ? "w-full max-w-[min(100%,760px)]"
-      : size === "hero-lg"
-        ? "w-full max-w-[min(100%,680px)]"
-        : size === "hero"
-          ? "w-full max-w-[min(100%,520px)]"
-          : "w-full max-w-[320px]";
+    size === "hero-xxl"
+      ? "w-full max-w-[min(100%,990px)]"
+      : size === "hero-xl"
+        ? "w-full max-w-[min(100%,760px)]"
+        : size === "hero-lg"
+          ? "w-full max-w-[min(100%,680px)]"
+          : size === "hero"
+            ? "w-full max-w-[min(100%,520px)]"
+            : "w-full max-w-[320px]";
+
+  const blobBackgroundScale = size === "hero-xxl" ? 1.2 : 1;
+  const blobBackgroundOffsetX = size === "hero-xxl" ? "10%" : "0%";
+  const blobTransform =
+    blobBackgroundScale !== 1 || blobBackgroundOffsetX !== "0%"
+      ? `scale(${blobBackgroundScale}) translateX(${blobBackgroundOffsetX})`
+      : undefined;
 
   return (
     <motion.div
-      className={`relative mx-auto ${dimensions} ${className}`}
+      className={`relative mx-auto overflow-visible ${dimensions} ${className}`}
       initial={{ scale: 0.92, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
     >
-      <svg
-        viewBox="0 0 520 220"
-        className="h-auto w-full drop-shadow-[0_4px_0_rgba(26,26,26,0.06)]"
-        aria-hidden
-      >
+      <div className="relative aspect-[520/220] w-full overflow-visible">
+        <svg
+          viewBox="0 0 520 220"
+          className="absolute inset-0 h-full w-full origin-center drop-shadow-[0_4px_0_rgba(26,26,26,0.06)]"
+          style={blobTransform ? { transform: blobTransform } : undefined}
+          aria-hidden
+        >
         <defs>
           <linearGradient id="pinkMatte" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="#fce4ec" />
@@ -87,15 +98,18 @@ export function PinkBlob({ children, className = "", size = "default" }: PinkBlo
           strokeDasharray="7 5"
           strokeLinejoin="round"
         />
-      </svg>
+        </svg>
+      </div>
 
       <div
         className={`absolute inset-0 flex flex-col items-center justify-center text-center ${
-          size === "hero-xl"
-            ? "px-14 pb-5 pt-5 sm:px-16"
-            : size === "hero-lg"
-              ? "px-10 pb-3 pt-3 sm:px-12"
-              : "px-8 pb-2 pt-2"
+          size === "hero-xxl"
+            ? "px-[18%] pb-[10%] pt-[8%] sm:px-[20%]"
+            : size === "hero-xl"
+              ? "px-14 pb-5 pt-5 sm:px-16"
+              : size === "hero-lg"
+                ? "px-10 pb-3 pt-3 sm:px-12"
+                : "px-8 pb-2 pt-2"
         }`}
       >
         {children}

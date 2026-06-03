@@ -15,7 +15,7 @@ function ExperienceCard({
   entry: (typeof experiences)[0];
   index: number;
 }) {
-  const noteColor = index % 3 === 0 ? "white" : index % 3 === 1 ? "yellow" : "pink";
+  const noteColor = index % 2 === 0 ? "yellow" : "white";
 
   return (
     <motion.div
@@ -103,7 +103,7 @@ export function ExperienceSection() {
       <LabelTag className="!px-5 !py-2 !text-lg">Experience</LabelTag>
 
       <div className="space-y-4">
-        <LabelTag color="pink">Professional</LabelTag>
+        <LabelTag color="yellow">Professional</LabelTag>
         {work.map((entry, i) => (
           <ExperienceCard key={entry.id} entry={entry} index={i} />
         ))}

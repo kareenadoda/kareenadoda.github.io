@@ -10,8 +10,9 @@ export function ProjectsSection() {
     <div className="space-y-5">
       <LabelTag className="!px-5 !py-2 !text-lg">Projects</LabelTag>
 
-      <p className="font-hand text-sm text-[var(--color-muted)]">
-        Hackathon builds & side projects — links coming soon.
+      <p className="font-hand text-sm leading-relaxed text-[var(--color-muted)]">
+        I promise I have more, I just have to update them and put them here!
+        I&apos;m on it!
       </p>
 
       <div className="space-y-4">

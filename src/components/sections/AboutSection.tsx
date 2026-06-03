@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { education, profile } from "@/lib/profile";
 import { LabelTag } from "@/components/scrapbook/LabelTag";
@@ -35,18 +36,29 @@ export function AboutSection() {
         <LabelTag color="pink" className="mb-3">
           Education
         </LabelTag>
-        <p className="font-display font-bold">{education.school}</p>
-        <p className="mt-1 font-hand text-sm">{education.degree}</p>
-        <p className="font-hand text-sm text-[var(--color-muted)]">
-          {education.minor}
-        </p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          <LabelTag color="yellow" className="!text-xs">
-            {education.graduation}
-          </LabelTag>
-          <LabelTag color="yellow" className="!text-xs">
-            GPA {education.gpa}
-          </LabelTag>
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="font-display font-bold">{education.school}</p>
+            <p className="mt-1 font-hand text-sm">{education.degree}</p>
+            <p className="font-hand text-sm text-[var(--color-muted)]">
+              {education.minor}
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <LabelTag color="yellow" className="!text-xs">
+                {education.graduation}
+              </LabelTag>
+              <LabelTag color="yellow" className="!text-xs">
+                GPA {education.gpa}
+              </LabelTag>
+            </div>
+          </div>
+          <Image
+            src={education.logo}
+            alt={education.logoAlt}
+            width={40}
+            height={40}
+            className="mt-0.5 h-9 w-9 shrink-0 object-contain sm:h-10 sm:w-10"
+          />
         </div>
       </motion.div>
 
@@ -70,9 +82,11 @@ export function AboutSection() {
       >
         {[
           { label: "Based in", value: "New Jersey" },
-          { label: "Focus", value: "Full-stack · AI · Product" },
+          {
+            label: "Focus",
+            value: "Full-stack · AI · Product · Prompting · Context management",
+          },
           { label: "Currently", value: "Rutgers CS '27" },
-          { label: "Phone", value: profile.phone },
         ].map((item) => (
           <div
             key={item.label}

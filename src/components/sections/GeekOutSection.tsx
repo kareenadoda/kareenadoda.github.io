@@ -3,35 +3,40 @@
 import { motion } from "framer-motion";
 import { PinkBlob } from "@/components/scrapbook/PinkBlob";
 import { LabelTag } from "@/components/scrapbook/LabelTag";
+import { FeatureComments } from "@/components/sections/FeatureComments";
 
 const changeFeatures = [
   {
-    title: "Apple Emojis Keyboard on MacBook",
-    body: "Disappears after one click. It should stay longer so people can spam/try more — WhatsApp already does this on desktop.",
+    title: "Apple Emojis Keyboard disappears after one click",
+    body: "If this tab stays longer, the user can spam emojis or type different ones. Whatsapp desktop just allowed this on mac.",
   },
   {
-    title: "Email: rename attachment (per email)",
-    body: "I don’t need to rename the real file—just the name for that one email. Imagine if they allowed it while sending.",
+    title: "Gmail allowing us to rename attachments",
+    body: "I don't need to rename the real file, just the name for that one email. Imagine if they allowed it while sending.",
   },
   {
-    title: "LinkedIn: experiences by preference",
-    body: "Could LinkedIn let us display experiences based on our preferences (not strictly chronological)? What do you think?",
+    title: "LinkedIn: Allowing us to sort experiences by preference and not chronologically",
+    body: "Do you think this would help?",
   },
 ] as const;
 
 const loveFeatures = [
   {
     title: "Apple motion detection cues",
-    body: "Those subtle “something moved” cues. Love how they make the experience feel aware without being distracting.",
+    body: "I'm not sure if this is a placebo or scientifically proved, I'm guesing second obviously but it does work on me!!",
+  },
+  {
+    title: "Select users for Whatsapp group call",
+    body: "Whatsapp now lets you make group calls by selecting a few people! Helps to not wake up my friends who are taking a nap hehe",
   },
 ] as const;
 
 export function GeekOutSection() {
   return (
     <div className="space-y-5">
-      <div className="relative mx-auto w-full max-w-[820px]">
-        <PinkBlob size="hero-xl">
-          <span className="font-display text-[2.35rem] font-bold leading-none tracking-tight text-[var(--color-ink)] sm:text-[2.8rem]">
+      <div className="relative mx-auto w-full max-w-[656px]">
+        <PinkBlob size="hero-xl" className="!max-w-[min(100%,608px)]">
+          <span className="font-display text-[1.88rem] font-bold leading-none tracking-tight text-[var(--color-ink)] sm:text-[2.24rem]">
             Features!
           </span>
         </PinkBlob>
@@ -43,8 +48,8 @@ export function GeekOutSection() {
         transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
         className="font-hand text-sm leading-relaxed text-[var(--color-muted)]"
       >
-        Below: I am obsessed with features and always love discovering them,
-        tell me if u also love any of these or have any thoughts on these : D
+        I am obsessed with features and always love discovering them. Tell me
+        if u also love any of these or have any thoughts on these : D
       </motion.p>
 
       <div className="space-y-3">
@@ -100,6 +105,8 @@ export function GeekOutSection() {
           ))}
         </div>
       </div>
+
+      <FeatureComments />
     </div>
   );
 }

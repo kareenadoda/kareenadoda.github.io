@@ -7,9 +7,9 @@ import { WashiTape } from "./WashiTape";
 
 /** Fan arc: each card pivots from the contact button (bottom-right). */
 const fanLayout = [
-  { angle: 128, radius: 92, rotate: -10, color: "bg-[var(--color-note-yellow)]" },
-  { angle: 108, radius: 108, rotate: -4, color: "bg-[var(--color-note-white)]" },
-  { angle: 88, radius: 96, rotate: 4, color: "bg-[var(--color-note-pink)]" },
+  { angle: 128, radius: 116, rotate: -10, color: "bg-[var(--color-note-yellow)]" },
+  { angle: 108, radius: 132, rotate: -4, color: "bg-[var(--color-note-white)]" },
+  { angle: 88, radius: 120, rotate: 4, color: "bg-[var(--color-note-pink)]" },
 ] as const;
 
 function fanOffset(angleDeg: number, radius: number) {
@@ -55,7 +55,7 @@ export function ContactButton() {
                   href={link.href}
                   target={link.id === "email" ? undefined : "_blank"}
                   rel="noopener noreferrer"
-                  className={`border-soft absolute bottom-0 right-0 block w-[7.5rem] origin-bottom-right px-3 py-2.5 shadow-[2px_3px_0_rgba(0,0,0,0.08)] ${layout.color}`}
+                  className={`border-soft absolute bottom-0 right-0 block w-[11.5rem] origin-bottom-right px-4 py-3.5 shadow-[2px_3px_0_rgba(0,0,0,0.08)] ${layout.color}`}
                   initial={{ opacity: 0, x: 0, y: 0, scale: 0.5, rotate: 0 }}
                   animate={{
                     opacity: 1,
@@ -82,10 +82,10 @@ export function ContactButton() {
                   }}
                   onClick={() => setOpen(false)}
                 >
-                  <span className="font-display text-sm font-bold leading-tight">
+                  <span className="font-display text-lg font-bold leading-tight">
                     {link.label}
                   </span>
-                  <span className="mt-0.5 block truncate font-hand text-[10px] leading-tight text-[var(--color-muted)]">
+                  <span className="mt-1 block truncate font-hand text-sm leading-tight text-[var(--color-muted)]">
                     {link.id === "email" ? "kareenadoda5@gmail.com" : link.description}
                   </span>
                 </motion.a>
@@ -98,7 +98,7 @@ export function ContactButton() {
           onClick={() => setOpen((v) => !v)}
           className="nav-tab relative matte-pink z-[60] px-5 py-3 font-display text-sm font-bold shadow-[2px_3px_0_rgba(0,0,0,0.08)] sm:text-base"
           style={{ rotate: open ? "0deg" : "-2deg" }}
-          animate={{ scale: open ? 1.02 : 1 }}
+          animate={{ scale: 1 }}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
           transition={spring}

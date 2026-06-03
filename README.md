@@ -24,9 +24,23 @@ git remote add origin https://github.com/kareenadoda/kareenadoda.github.io.git
 git push -u origin main
 ```
 
+## Feature comments (optional)
+
+The **Geek Out → Features** section can accept anonymous or named comments via [Supabase](https://supabase.com) (no sign-in). New comments stay hidden until you approve them in the Supabase dashboard.
+
+1. Create a free Supabase project.
+2. In **SQL Editor**, run the script in [`supabase/feature_comments.sql`](supabase/feature_comments.sql).
+3. Copy `.env.example` to `.env.local` and add your project URL + **anon** public key.
+4. For production, add the same two values as GitHub repo **Settings → Secrets and variables → Actions**:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+5. To publish a comment: **Table Editor → feature_comments →** set `approved` to `true`.
+
+Without those env vars, the comment block is hidden and the rest of the site works as before.
+
 ## Stack
 
-- Next.js (static export) · TypeScript · Tailwind CSS · Framer Motion
+- Next.js (static export) · TypeScript · Tailwind CSS · Framer Motion · Supabase (comments)
 
 ## Scripts
 

@@ -1,7 +1,6 @@
 export const profile = {
   name: "Kareena Vijay Doda",
   shortName: "Kareena",
-  phone: "(848) 437-0696",
   email: "kareenadoda5@gmail.com",
   linkedin: "https://linkedin.com/in/kareena-doda",
   github: "https://github.com/kareenadoda",
@@ -18,6 +17,7 @@ export const images = {
   womenInProduct: "/images/women-in-product.png",
   amazonOffice: "/images/amazon-office.png",
   amazonRooftop: "/images/amazon-rooftop.png",
+  rutgersLogo: "/images/rutgers-logo.png",
 } as const;
 
 export type ExperienceImage = {
@@ -34,6 +34,8 @@ export const education = {
   minor: "Minor in Business Administration",
   graduation: "May 2027",
   gpa: "3.8 / 4.0",
+  logo: images.rutgersLogo,
+  logoAlt: "Rutgers University Block R logo",
 };
 
 export const skills = {
@@ -86,6 +88,17 @@ export const experiences: ExperienceEntry[] = [
       "Assist the Department Head in running the course smoothly and efficiently.",
       "As Learning Assistant (Aug 2024 – Aug 2025): led 3 cohorts of 80+ students, reinforcing HashMaps, Trees, Queues, and core data structures.",
       "Graded quizzes and assignments; provided guidance and resolved student questions on lecture material.",
+    ],
+  },
+  {
+    id: "amazon-2026",
+    organization: "Amazon",
+    location: "Santa Clara, CA",
+    role: "Software Development Engineer Intern",
+    period: "May 2026 – Aug 2026",
+    kind: "work",
+    bullets: [
+      "Working on the Rufus (Alexa for Shopping) team to learn more about agents and caching.",
     ],
   },
   {
