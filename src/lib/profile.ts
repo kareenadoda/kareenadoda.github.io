@@ -17,6 +17,7 @@ export const images = {
   womenInProduct: "/images/women-in-product.png",
   amazonOffice: "/images/amazon-office.png",
   amazonRooftop: "/images/amazon-rooftop.png",
+  amazonSantaClara: "/images/amazon-santa-clara.png",
   rutgersLogo: "/images/rutgers-logo.png",
 } as const;
 
@@ -76,29 +77,31 @@ export type ExperienceEntry = {
 
 export const experiences: ExperienceEntry[] = [
   {
-    id: "rutgers-la",
-    organization: "Rutgers University — Dept. of Computer Science",
-    location: "New Brunswick, NJ",
-    role: "Lead Learning Assistant — Data Structures",
-    period: "Aug 2025 – Present · promoted from Learning Assistant (Aug 2024)",
-    kind: "work",
-    bullets: [
-      "Promoted to Lead LA: manage a team of 30 learning assistants as they lead recitation classes.",
-      "Conduct kickoff and staff meetings to coordinate the course across sections.",
-      "Assist the Department Head in running the course smoothly and efficiently.",
-      "As Learning Assistant (Aug 2024 – Aug 2025): led 3 cohorts of 80+ students, reinforcing HashMaps, Trees, Queues, and core data structures.",
-      "Graded quizzes and assignments; provided guidance and resolved student questions on lecture material.",
-    ],
-  },
-  {
     id: "amazon-2026",
     organization: "Amazon",
     location: "Santa Clara, CA",
     role: "Software Development Engineer Intern",
     period: "May 2026 – Aug 2026",
     kind: "work",
+    image: images.amazonSantaClara,
+    imageAlt: "View from Amazon Santa Clara office",
     bullets: [
       "Working on the Rufus (Alexa for Shopping) team to learn more about agents and caching.",
+    ],
+  },
+  {
+    id: "rutgers-la",
+    organization: "Rutgers University — Dept. of Computer Science",
+    location: "New Brunswick, NJ",
+    role: "Lead Learning Assistant — Data Structures",
+    period: "Aug 2025 – May 2025 · Learning Assistant (Aug 2024 – May 2025)",
+    kind: "work",
+    bullets: [
+      "Promoted to Lead LA: manage a team of 30 learning assistants as they lead recitation classes.",
+      "Conduct kickoff and staff meetings to coordinate the course across sections.",
+      "Assist the Department Head in running the course smoothly and efficiently.",
+      "As Learning Assistant (Aug 2024 – May 2025): led 3 cohorts of 80+ students, reinforcing HashMaps, Trees, Queues, and core data structures.",
+      "Graded quizzes and assignments; provided guidance and resolved student questions on lecture material.",
     ],
   },
   {
