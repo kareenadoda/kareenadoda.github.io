@@ -18,6 +18,8 @@ export const images = {
   amazonOffice: "/images/amazon-office.png",
   amazonRooftop: "/images/amazon-rooftop.png",
   amazonSantaClara: "/images/amazon-santa-clara.png",
+  ideaNextBreathPoster: "/images/idea-nextbreath-poster.png",
+  ideaHatcheryPresentation: "/images/idea-hatchery-presentation.png",
   rutgersLogo: "/images/rutgers-logo.png",
 } as const;
 
@@ -185,6 +187,22 @@ export const experiences: ExperienceEntry[] = [
     role: "Research Intern — Design Research",
     period: "May 2024 – Aug 2024",
     kind: "work",
+    gallery: [
+      {
+        src: images.ideaNextBreathPoster,
+        alt: "NextBreath research poster at IDEA showcase",
+        aspect: "landscape",
+        rotation: -3,
+        tapeVariant: "white",
+      },
+      {
+        src: images.ideaHatcheryPresentation,
+        alt: "Presentation at The Hatchery — Rutgers IDEA program",
+        aspect: "landscape",
+        rotation: 4,
+        tapeVariant: "pink-stripe",
+      },
+    ],
     bullets: [
       "Worked with startup NextBreath to build the front-end of an iOS app for COPD patients using React Native and JavaScript.",
       "Researched 30 features for audiences ages 65+; prioritized 10 based on business requirements, code complexity, and UX needs.",
