@@ -42,27 +42,28 @@ export const education = {
 };
 
 export const skills = {
-  languages: [
+  languagesAndTools: [
     "Java",
-    "C",
-    "Python",
     "TypeScript",
     "JavaScript",
-    "React.js",
+    "Python",
     "SQL",
-    "HTML",
-  ],
-  tools: [
-    "AWS",
-    "Bedrock",
-    "GitHub",
+    "Node.js",
+    "React Native",
+    "FastAPI",
+    "Git",
     "Docker",
-    "Power BI",
-    "Tableau",
-    "Excel",
-    "PowerPoint",
+    "REST APIs",
   ],
-};
+  cloudAndAi: [
+    "AWS",
+    "Amazon Bedrock",
+    "CAG",
+    "Model Context Protocol (MCP)",
+    "LLM Integration",
+    "Prompt Engineering",
+  ],
+} as const;
 
 export type ExperienceEntry = {
   id: string;

@@ -6,11 +6,21 @@ import { skills } from "@/lib/profile";
 
 const flowSpring = { type: "spring" as const, stiffness: 140, damping: 18, mass: 0.65 };
 
-type SkillItem = { name: string; group: "lang" | "tool" };
+type SkillGroup = "languagesAndTools" | "cloudAndAi";
+
+type SkillItem = { name: string; group: SkillGroup };
+
+const skillSections: { key: SkillGroup; label: string }[] = [
+  { key: "languagesAndTools", label: "Languages & Tools" },
+  { key: "cloudAndAi", label: "Cloud & AI" },
+];
 
 const allSkills: SkillItem[] = [
-  ...skills.languages.map((name) => ({ name, group: "lang" as const })),
-  ...skills.tools.map((name) => ({ name, group: "tool" as const })),
+  ...skills.languagesAndTools.map((name) => ({
+    name,
+    group: "languagesAndTools" as const,
+  })),
+  ...skills.cloudAndAi.map((name) => ({ name, group: "cloudAndAi" as const })),
 ];
 
 export function SkillsChips() {
@@ -21,39 +31,26 @@ export function SkillsChips() {
       className="matte-paper border-soft-dashed p-4"
       onMouseLeave={() => setHoveredIndex(null)}
     >
-      <p className="font-display text-xs font-bold uppercase tracking-wide text-[var(--color-muted)]">
-        Languages
-      </p>
-      <div className="mt-2 flex flex-wrap gap-2">
-        {allSkills
-          .map((item, index) => ({ ...item, index }))
-          .filter((item) => item.group === "lang")
-          .map((item) => (
-            <SkillChip
-              key={item.name}
-              name={item.name}
-              isActive={hoveredIndex === item.index}
-              onHover={() => setHoveredIndex(item.index)}
-            />
-          ))}
-      </div>
-
-      <p className="mt-4 font-display text-xs font-bold uppercase tracking-wide text-[var(--color-muted)]">
-        Tools & Technologies
-      </p>
-      <div className="mt-2 flex flex-wrap gap-2">
-        {allSkills
-          .map((item, index) => ({ ...item, index }))
-          .filter((item) => item.group === "tool")
-          .map((item) => (
-            <SkillChip
-              key={item.name}
-              name={item.name}
-              isActive={hoveredIndex === item.index}
-              onHover={() => setHoveredIndex(item.index)}
-            />
-          ))}
-      </div>
+      {skillSections.map((section, sectionIndex) => (
+        <div key={section.key} className={sectionIndex > 0 ? "mt-4" : undefined}>
+          <p className="font-display text-xs font-bold uppercase tracking-wide text-[var(--color-muted)]">
+            {section.label}
+          </p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            {allSkills
+              .map((item, index) => ({ ...item, index }))
+              .filter((item) => item.group === section.key)
+              .map((item) => (
+                <SkillChip
+                  key={item.name}
+                  name={item.name}
+                  isActive={hoveredIndex === item.index}
+                  onHover={() => setHoveredIndex(item.index)}
+                />
+              ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

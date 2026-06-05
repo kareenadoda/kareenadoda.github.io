@@ -81,10 +81,9 @@ export function AboutSection() {
         className="grid gap-3 sm:grid-cols-2"
       >
         {[
-          { label: "Based in", value: "New Jersey" },
           {
             label: "Focus",
-            value: "Full-stack · AI · Product · Prompting · Context management",
+            value: "Full-stack · AI · Product · CAG · Context management",
           },
           { label: "Currently", value: "Rutgers CS '27" },
         ].map((item) => (
