@@ -7,8 +7,8 @@ export const profile = {
   tagline: "CS @ Rutgers Honors College",
   linkedinHeadline:
     "CS @ Rutgers · Prev. SDE Intern Amazon · IDEA · Women in Product",
-  introSubline: "A little corner of the internet —",
-  introHighlight: "part scrapbook, part portfolio.",
+  introSubline:
+    "A little corner on the internet- part scrapbook, part portfolio <3",
 };
 
 export const images = {
@@ -58,7 +58,7 @@ export const skills = {
   cloudAndAi: [
     "AWS",
     "Amazon Bedrock",
-    "CAG",
+    "Cache-Augmented Generation (CAG)",
     "Model Context Protocol (MCP)",
     "LLM Integration",
     "Prompt Engineering",

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { education, profile } from "@/lib/profile";
 import { LabelTag } from "@/components/scrapbook/LabelTag";
 import { SkillsChips } from "@/components/sections/SkillsChips";
+import { CurrentFavouriteSongSection } from "@/components/sections/CurrentFavouriteSongSection";
 const fadeUp = {
   hidden: { opacity: 0, y: 12 },
   show: (i: number) => ({
@@ -83,7 +84,8 @@ export function AboutSection() {
         {[
           {
             label: "Focus",
-            value: "Full-stack · AI · Product · CAG · Context management",
+            value:
+              "Full-stack · AI · Product · Cache-Augmented Generation (CAG) · Context management",
           },
           { label: "Currently", value: "Rutgers CS '27" },
         ].map((item) => (
@@ -97,6 +99,16 @@ export function AboutSection() {
             <p className="mt-2 font-hand text-base font-medium">{item.value}</p>
           </div>
         ))}
+      </motion.div>
+
+      <motion.div
+        custom={4}
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+        className="matte-paper border-soft p-4"
+      >
+        <CurrentFavouriteSongSection />
       </motion.div>
     </div>
   );

@@ -90,8 +90,6 @@ export function HeroIntro() {
             </p>
             <p className="relative mt-3 font-hand text-base leading-relaxed text-[var(--color-ink)] sm:text-lg">
               {profile.introSubline}
-              <br />
-              <span className="font-display font-semibold">{profile.introHighlight}</span>
             </p>
           </div>
         </motion.div>

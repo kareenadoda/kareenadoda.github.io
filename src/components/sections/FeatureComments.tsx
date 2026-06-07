@@ -109,7 +109,7 @@ export function FeatureComments() {
   return (
     <div className="space-y-3 pt-2">
       <LabelTag color="pink" className="!px-5 !py-2 !text-lg">
-        Leave a comment
+        Leave a comment:
       </LabelTag>
 
       <motion.div
@@ -126,7 +126,7 @@ export function FeatureComments() {
           <form onSubmit={handleSubmit} className="space-y-3">
             <p className="font-hand text-xs leading-relaxed text-[var(--color-muted)]">
               Optional name — leave blank to stay anonymous. Comments show up
-              after I approve them.
+              after I approve them!
             </p>
 
             <label className="block">

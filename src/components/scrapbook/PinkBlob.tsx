@@ -6,9 +6,15 @@ type PinkBlobProps = {
   children: React.ReactNode;
   className?: string;
   size?: "hero" | "hero-lg" | "hero-xl" | "hero-xxl" | "default";
+  blobScale?: number;
 };
 
-export function PinkBlob({ children, className = "", size = "default" }: PinkBlobProps) {
+export function PinkBlob({
+  children,
+  className = "",
+  size = "default",
+  blobScale,
+}: PinkBlobProps) {
   const dimensions =
     size === "hero-xxl"
       ? "w-full max-w-[min(100%,990px)]"
@@ -20,8 +26,8 @@ export function PinkBlob({ children, className = "", size = "default" }: PinkBlo
             ? "w-full max-w-[min(100%,520px)]"
             : "w-full max-w-[320px]";
 
-  const blobBackgroundScale = size === "hero-xxl" ? 1.2 : 1;
-  const blobBackgroundOffsetX = size === "hero-xxl" ? "10%" : "0%";
+  const blobBackgroundScale = blobScale ?? (size === "hero-xxl" ? 1.26 : 1);
+  const blobBackgroundOffsetX = size === "hero-xxl" ? "5%" : "0%";
   const blobTransform =
     blobBackgroundScale !== 1 || blobBackgroundOffsetX !== "0%"
       ? `scale(${blobBackgroundScale}) translateX(${blobBackgroundOffsetX})`

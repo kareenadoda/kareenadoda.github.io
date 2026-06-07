@@ -3,61 +3,76 @@
 import { motion } from "framer-motion";
 import { PinkBlob } from "@/components/scrapbook/PinkBlob";
 import { LabelTag } from "@/components/scrapbook/LabelTag";
+import { WashiTape } from "@/components/scrapbook/WashiTape";
 import { FeatureComments } from "@/components/sections/FeatureComments";
 
 const changeFeatures = [
   {
-    title: "Apple Emojis Keyboard disappears after one click",
-    body: "If this tab stays longer, the user can spam emojis or type different ones. Whatsapp desktop just allowed this on mac.",
+    title: "Apple: Emojis Keyboard disappears after one click",
+    body: "If this tab stays longer, the user can spam emojis or type different ones. As of now, the keyboard just closes after one-click. Whatsapp desktop just allowed this on mac with the emoji keyboard.",
   },
   {
-    title: "Gmail allowing us to rename attachments",
-    body: "I don't need to rename the real file, just the name for that one email. Imagine if they allowed it while sending.",
+    title: "Gmail: Allowing us to rename attachments",
+    body: "I don't need to rename the real file, just want to change it for a particular email. Imagine how much time it would save us if Gmail allowed us to rename attachments for particular emails! (I need my cute and cringey 'final final' names on my laptop but don't wanna send them out)",
   },
   {
-    title: "LinkedIn: Allowing us to sort experiences by preference and not chronologically",
-    body: "Do you think this would help?",
+    title: "LinkedIn: Sort experiences by preference and not chronologically",
+    body: "Sometimes I want a particular experience to be highlighted, even if it isn't the most recent one. Do you think this would help or does it make organization bad? I think they could add a \"(8 months ago)\" detail but still allow us to pin it. But maybe the Featured section is for this kind of stuff 👀",
   },
 ] as const;
 
 const loveFeatures = [
   {
-    title: "Apple motion detection cues",
-    body: "I'm not sure if this is a placebo or scientifically proved, I'm guesing second obviously but it does work on me!!",
+    title: "Whatsapp: Select users for group call",
+    body: "Whatsapp now lets you make group calls by selecting a few people! So I don't accidentally wake up friends who are napping hehe",
   },
   {
-    title: "Select users for Whatsapp group call",
-    body: "Whatsapp now lets you make group calls by selecting a few people! Helps to not wake up my friends who are taking a nap hehe",
+    title: "Apple: Motion detection cues",
+    body: "I'm not sure if this is a placebo or scientifically proven (hey if Apple is doing it, I'm guessing it is👀), but it definitely works on me!",
+  },
+  {
+    title: "Spotify: Sleep Timer",
+    body: "They finally added the sleep timer for songs on Desktop Version!",
   },
 ] as const;
 
 export function GeekOutSection() {
   return (
     <div className="space-y-5">
-      <div className="relative mx-auto w-full max-w-[656px]">
-        <PinkBlob size="hero-xl" className="!max-w-[min(100%,608px)]">
-          <span className="font-display text-[1.88rem] font-bold leading-none tracking-tight text-[var(--color-ink)] sm:text-[2.24rem]">
-            Features!
-          </span>
-        </PinkBlob>
+      <div className="space-y-2">
+        <div className="relative mx-auto w-full max-w-[656px]">
+          <PinkBlob size="hero-xl" blobScale={0.8} className="!max-w-[min(100%,608px)]">
+            <span className="font-display text-[1.88rem] font-bold leading-none tracking-tight text-[var(--color-ink)] sm:text-[2.24rem]">
+              Features!
+            </span>
+          </PinkBlob>
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="font-hand text-sm leading-relaxed text-[var(--color-muted)]"
+        >
+          I am obsessed with features and always love discovering them. Tell me
+          if you also love any of these or have any thoughts on them in the
+          comments tab below :D
+        </motion.p>
       </div>
 
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-        className="font-hand text-sm leading-relaxed text-[var(--color-muted)]"
-      >
-        I am obsessed with features and always love discovering them. Tell me
-        if u also love any of these or have any thoughts on these : D
-      </motion.p>
-
       <div className="space-y-3">
-        <LabelTag color="pink" className="!px-5 !py-2 !text-lg">
-          Features I’d like to change
-        </LabelTag>
+        <div className="relative inline-block pt-4">
+          <WashiTape
+            variant="white"
+            className="absolute top-0 left-4 z-20 w-[4.5rem]"
+            rotation={-5}
+          />
+          <LabelTag color="pink" className="!px-5 !py-2 !text-lg">
+            Features I’d like to change:
+          </LabelTag>
+        </div>
 
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid gap-3">
           {changeFeatures.map((f, i) => (
             <motion.div
               key={f.title}
@@ -83,9 +98,16 @@ export function GeekOutSection() {
       </div>
 
       <div className="space-y-3">
-        <LabelTag color="yellow" className="!px-5 !py-2 !text-lg">
-          Features I recently discovered / currently love
-        </LabelTag>
+        <div className="relative inline-block pt-4">
+          <WashiTape
+            variant="white"
+            className="absolute top-0 left-4 z-20 w-14"
+            rotation={5}
+          />
+          <LabelTag color="yellow" className="!px-5 !py-2 !text-lg">
+            Features I recently discovered / currently love:
+          </LabelTag>
+        </div>
 
         <div className="grid gap-3">
           {loveFeatures.map((f) => (
