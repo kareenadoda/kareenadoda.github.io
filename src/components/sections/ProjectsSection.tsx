@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { projects } from "@/lib/profile";
+import { projects, profile } from "@/lib/profile";
 import { StickyNote } from "@/components/scrapbook/StickyNote";
 import { LabelTag } from "@/components/scrapbook/LabelTag";
 
@@ -11,8 +11,11 @@ export function ProjectsSection() {
       <LabelTag className="!px-5 !py-2 !text-lg">Projects</LabelTag>
 
       <p className="font-hand text-sm leading-relaxed text-[var(--color-muted)]">
-        I promise I have more, I just have to update them and put them here!
-        I&apos;m on it!
+        Hackathon builds and Rutgers coursework — more on{" "}
+        <a href={profile.github} className="underline">
+          GitHub
+        </a>
+        !
       </p>
 
       <div className="space-y-4">
