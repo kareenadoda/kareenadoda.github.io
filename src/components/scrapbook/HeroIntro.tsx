@@ -10,12 +10,12 @@ export function HeroIntro() {
   return (
     <header className="relative mb-12 sm:mb-14">
       <div className="relative mx-auto w-full max-w-4xl px-1 pt-2">
-        <div className="hero-matched-row grid items-stretch gap-6 md:grid-cols-2 md:gap-8 lg:gap-10">
+        <div className="hero-matched-row grid items-stretch gap-6 md:grid-cols-[0.95fr_1.05fr] md:gap-8 lg:gap-10">
           <div className="flex items-center justify-center md:justify-start">
             <div className="relative w-full">
               <WashiTape
                 variant="white"
-                className="absolute -right-1 top-5 z-30 w-[4.5rem] translate-x-[10%]"
+                className="absolute -top-3 left-1/2 z-30 w-[4.5rem] -translate-x-1/2"
                 rotation={6}
               />
               <PinkBlob size="hero-xxl">
@@ -39,12 +39,12 @@ export function HeroIntro() {
             </div>
           </div>
 
-          <div className="flex min-h-[12rem] items-stretch justify-center gap-1.5 sm:min-h-[13rem] sm:gap-2 md:min-h-0 md:justify-end">
+          <div className="flex min-h-[13rem] items-stretch justify-center gap-2.5 sm:min-h-[14rem] sm:gap-3 md:min-h-0 md:justify-end">
             <PhotoPolaroid
               src={images.heroLaughing}
               alt="Kareena laughing"
               rotation={-4}
-              className="z-10 w-[40%] max-w-[10.5rem] md:h-full md:max-h-none md:w-[42%] md:max-w-[8.75rem] lg:max-w-[9.5rem]"
+              className="z-10 w-[44%] max-w-[12rem] md:h-full md:max-h-none md:w-[47%] md:max-w-[11.5rem] lg:max-w-[13.5rem]"
               tapeVariant="pink-stripe"
               priority
               aspect="portrait"
@@ -56,7 +56,7 @@ export function HeroIntro() {
               src={images.heroOutdoor}
               alt="Kareena outdoors at Rutgers"
               rotation={5}
-              className="w-[40%] max-w-[10.5rem] md:h-full md:max-h-none md:w-[42%] md:max-w-[8.75rem] lg:max-w-[9.5rem]"
+              className="w-[44%] max-w-[12rem] md:h-full md:max-h-none md:w-[47%] md:max-w-[11.5rem] lg:max-w-[13.5rem]"
               tapeVariant="white"
               priority
               aspect="portrait"
