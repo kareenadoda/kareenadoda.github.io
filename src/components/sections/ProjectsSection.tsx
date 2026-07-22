@@ -29,9 +29,6 @@ export function ProjectsSection() {
           >
             <StickyNote
               color={i % 2 === 0 ? "white" : "yellow"}
-              tape
-              tapeVariant={i % 2 === 0 ? "pink-stripe" : "white"}
-              tapePosition={i % 2 === 0 ? "top-left" : "top-right"}
               className="!p-4"
             >
               <div className="flex flex-wrap items-start justify-between gap-2">

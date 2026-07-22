@@ -34,7 +34,7 @@ export const sections: Section[] = [
   },
   {
     id: "personal-life",
-    label: "Personal Life",
+    label: "Life",
     subtitle: "Photos, moments & little joys",
   },
 ];

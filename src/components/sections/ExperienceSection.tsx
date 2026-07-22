@@ -26,9 +26,6 @@ function ExperienceCard({
       <StickyNote
         color={noteColor}
         variant={entry.kind === "club" ? "dashed" : "plain"}
-        tape={index % 2 === 0}
-        tapeVariant={index % 2 === 0 ? "pink-dots" : "white"}
-        tapePosition={index % 2 === 0 ? "top-left" : "top-right"}
         className="!p-4"
       >
         {entry.gallery && entry.gallery.length >= 2 && (

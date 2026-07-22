@@ -23,7 +23,6 @@
   --radius-soft-sm: 0.875rem;
   --radius-pill: 9999px;
   --radius-pin: 1.5rem;
-  --color-pin-bg: #f5f0ea;
 
   --shadow-paper-sm: 1px 2px 0 rgba(26, 26, 26, 0.08),
     0 6px 16px rgba(26, 26, 26, 0.06);
@@ -192,10 +191,6 @@ body {
 
 /* Pinterest-style Personal Life board */
 .pin-board-shell {
-  border-radius: var(--radius-pin);
-  background: var(--color-pin-bg);
-  border: 1px solid var(--color-border-soft);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
   padding: 1rem 1rem 1.25rem;
   max-height: min(72vh, 720px);
   overflow-y: auto;

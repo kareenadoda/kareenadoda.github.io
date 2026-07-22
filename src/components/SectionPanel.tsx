@@ -8,7 +8,6 @@ import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { PersonalLifeSection } from "@/components/sections/PersonalLifeSection";
 import { GeekOutSection } from "@/components/sections/GeekOutSection";
 import { StickyNote } from "@/components/scrapbook/StickyNote";
-import { WashiTape } from "@/components/scrapbook/WashiTape";
 
 const sectionComponents: Record<SectionId, React.ComponentType> = {
   about: AboutSection,
@@ -45,30 +44,21 @@ export function SectionPanel({ active }: SectionPanelProps) {
         className="relative"
       >
         {isPinterest ? (
-          <div className="pin-board-shell relative z-10">
+          <div
+            className="pin-board-shell matte-paper border-soft shadow-paper-sm relative z-10 bg-[var(--color-note-white)]"
+            data-lenis-prevent
+          >
             <Component />
           </div>
         ) : (
-          <>
-            <WashiTape
-              variant="pink-stripe"
-              className="absolute -top-3 left-12 z-30 w-[4.5rem]"
-              rotation={-6}
-            />
-            <WashiTape
-              variant="white"
-              className="absolute -top-3 right-14 z-30 w-14"
-              rotation={5}
-            />
-            <StickyNote
-              color={sectionNoteColor[active]}
-              variant={active === "geek-out" ? "dashed" : "plain"}
-              tape={false}
-              className="relative z-10"
-            >
-              <Component />
-            </StickyNote>
-          </>
+          <StickyNote
+            color={sectionNoteColor[active]}
+            variant={active === "geek-out" ? "dashed" : "plain"}
+            tape={false}
+            className="relative z-10"
+          >
+            <Component />
+          </StickyNote>
         )}
       </motion.div>
     </AnimatePresence>

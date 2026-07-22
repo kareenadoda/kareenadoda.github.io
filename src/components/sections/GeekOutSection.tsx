@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PinkBlob } from "@/components/scrapbook/PinkBlob";
 import { LabelTag } from "@/components/scrapbook/LabelTag";
 import { WashiTape } from "@/components/scrapbook/WashiTape";
 import { FeatureComments } from "@/components/sections/FeatureComments";
@@ -40,13 +39,24 @@ export function GeekOutSection() {
   return (
     <div className="space-y-5">
       <div className="space-y-2">
-        <div className="relative mx-auto w-full max-w-[656px]">
-          <PinkBlob size="hero-xl" blobScale={0.8} className="!max-w-[min(100%,608px)]">
+        <motion.div
+          className="relative mx-auto w-fit max-w-full pt-3"
+          style={{ rotate: "-1deg" }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <WashiTape
+            variant="yellow"
+            className="absolute -top-1 left-1/2 z-20 w-28 -translate-x-1/2 sm:w-36"
+            rotation={-2}
+          />
+          <div className="note-torn border-soft matte-yellow relative px-10 py-6 text-center sm:px-14 sm:py-7">
             <span className="font-display text-[1.88rem] font-bold leading-none tracking-tight text-[var(--color-ink)] sm:text-[2.24rem]">
               Features!
             </span>
-          </PinkBlob>
-        </div>
+          </div>
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -61,33 +71,27 @@ export function GeekOutSection() {
       </div>
 
       <div className="space-y-3">
-        <div className="relative inline-block pt-4">
-          <WashiTape
-            variant="white"
-            className="absolute top-0 left-4 z-20 w-[4.5rem]"
-            rotation={-5}
-          />
-          <LabelTag color="pink" className="!px-5 !py-2 !text-lg">
-            Features I’d like to change:
-          </LabelTag>
-        </div>
+        <LabelTag color="pink" className="!px-5 !py-2 !text-lg">
+          Features I’d like to change:
+        </LabelTag>
 
-        <div className="grid gap-3">
+        <div className="grid gap-3 sm:grid-cols-2">
           {changeFeatures.map((f, i) => (
             <motion.div
               key={f.title}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05, duration: 0.35 }}
+              whileHover={{ y: -3, transition: { duration: 0.2 } }}
+              style={{ rotate: i % 2 === 0 ? "-0.6deg" : "0.5deg" }}
             >
-              <div
-                className={`matte-paper border-soft rounded-[var(--radius-soft)] p-4 shadow-paper-sm ${
-                  i % 2 === 0
-                    ? "bg-[var(--color-note-white)]/75"
-                    : "bg-[var(--color-note-yellow)]/60"
-                }`}
-              >
-                <p className="font-display text-sm font-bold">{f.title}</p>
+              <div className="matte-paper border-soft h-full rounded-[var(--radius-soft)] bg-[var(--color-note-yellow)]/35 p-4 shadow-paper-sm transition-shadow duration-300 hover:shadow-paper-hover">
+                <div className="flex items-start justify-between gap-2">
+                  <p className="font-display text-sm font-bold">{f.title}</p>
+                  <span className="shrink-0 text-base" aria-hidden>
+                    💡
+                  </span>
+                </div>
                 <p className="mt-2 font-hand text-sm leading-relaxed text-[var(--color-muted)]">
                   {f.body}
                 </p>
@@ -98,27 +102,27 @@ export function GeekOutSection() {
       </div>
 
       <div className="space-y-3">
-        <div className="relative inline-block pt-4">
-          <WashiTape
-            variant="white"
-            className="absolute top-0 left-4 z-20 w-14"
-            rotation={5}
-          />
-          <LabelTag color="yellow" className="!px-5 !py-2 !text-lg">
-            Features I recently discovered / currently love:
-          </LabelTag>
-        </div>
+        <LabelTag color="yellow" className="!px-5 !py-2 !text-lg">
+          Features I recently discovered / currently love:
+        </LabelTag>
 
-        <div className="grid gap-3">
-          {loveFeatures.map((f) => (
+        <div className="grid gap-3 sm:grid-cols-2">
+          {loveFeatures.map((f, i) => (
             <motion.div
               key={f.title}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35 }}
+              transition={{ delay: i * 0.05, duration: 0.35 }}
+              whileHover={{ y: -3, transition: { duration: 0.2 } }}
+              style={{ rotate: i % 2 === 0 ? "0.5deg" : "-0.6deg" }}
             >
-              <div className="matte-paper border-soft rounded-[var(--radius-soft)] p-4 shadow-paper-sm bg-[var(--color-note-pink)]/25">
-                <p className="font-display text-sm font-bold">{f.title}</p>
+              <div className="matte-paper border-soft h-full rounded-[var(--radius-soft)] bg-[var(--color-note-pink)]/30 p-4 shadow-paper-sm transition-shadow duration-300 hover:shadow-paper-hover">
+                <div className="flex items-start justify-between gap-2">
+                  <p className="font-display text-sm font-bold">{f.title}</p>
+                  <span className="shrink-0 text-base" aria-hidden>
+                    ✨
+                  </span>
+                </div>
                 <p className="mt-2 font-hand text-sm leading-relaxed text-[var(--color-muted)]">
                   {f.body}
                 </p>
