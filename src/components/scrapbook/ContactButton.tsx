@@ -55,7 +55,7 @@ export function ContactButton() {
                   href={link.href}
                   target={link.id === "email" ? undefined : "_blank"}
                   rel="noopener noreferrer"
-                  className={`border-soft absolute bottom-0 right-0 block w-[11.5rem] origin-bottom-right px-4 py-3.5 shadow-[2px_3px_0_rgba(0,0,0,0.08)] ${layout.color}`}
+                  className={`border-soft absolute bottom-0 right-0 block w-[11.5rem] origin-bottom-right px-4 py-3.5 shadow-paper-sm transition-shadow duration-300 hover:shadow-paper-hover ${layout.color}`}
                   initial={{ opacity: 0, x: 0, y: 0, scale: 0.5, rotate: 0 }}
                   animate={{
                     opacity: 1,
@@ -78,6 +78,7 @@ export function ContactButton() {
                   }}
                   whileHover={{
                     scale: 1.06,
+                    y: y - 3,
                     transition: { duration: 0.15 },
                   }}
                   onClick={() => setOpen(false)}
@@ -96,7 +97,7 @@ export function ContactButton() {
         <motion.button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="nav-tab relative matte-pink z-[60] px-5 py-3 font-display text-sm font-bold shadow-[2px_3px_0_rgba(0,0,0,0.08)] sm:text-base"
+          className="nav-tab relative matte-pink z-[60] px-5 py-3 font-display text-sm font-bold sm:text-base"
           style={{ rotate: open ? "0deg" : "-2deg" }}
           animate={{ scale: 1 }}
           whileHover={{ scale: 1.04 }}

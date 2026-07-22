@@ -21,11 +21,6 @@ function PolaroidFrame({
   isSpotlight: boolean;
   onSelect?: () => void;
 }) {
-  const aspect =
-    photo.aspect === "landscape"
-      ? "aspect-[4/3]"
-      : "aspect-[3/4]";
-
   const frame = (
     <>
       <WashiTape
@@ -35,21 +30,18 @@ function PolaroidFrame({
       />
       <motion.div
         layout
-        className={`matte-paper border-soft overflow-hidden rounded-[var(--radius-soft)] bg-white shadow-[2px_4px_0_rgba(0,0,0,0.08)] ${
+        className={`matte-paper border-soft overflow-hidden rounded-[var(--radius-soft)] bg-white shadow-paper-sm transition-shadow duration-300 group-hover:shadow-paper-hover ${
           isSpotlight ? "p-3 pb-4 sm:p-3.5 sm:pb-5" : "p-2 pb-2.5 opacity-95"
         }`}
         transition={spring}
       >
-        <div
-          className={`relative w-full overflow-hidden bg-[var(--color-stripe-cream)] ${aspect} ${
-            isSpotlight ? "min-h-[15rem] sm:min-h-[19rem] md:min-h-[21rem]" : "min-h-[6.5rem] sm:min-h-[7.5rem]"
-          }`}
-        >
+        <div className="relative w-full aspect-square overflow-hidden bg-[var(--color-stripe-cream)]">
           <Image
             src={photo.src}
             alt={photo.alt}
             fill
             className="object-cover"
+            style={{ objectPosition: photo.objectPosition ?? "center" }}
             sizes={isSpotlight ? "(max-width: 640px) 85vw, 520px" : "160px"}
           />
         </div>
@@ -75,7 +67,7 @@ function PolaroidFrame({
     layout: true as const,
     layoutId: photo.src,
     transition: spring,
-    className: `relative block w-full text-left ${
+    className: `group relative block w-full text-left ${
       isSpotlight ? "z-10" : "z-0 cursor-pointer"
     }`,
     style: { rotate: isSpotlight ? 0 : (photo.rotation ?? -4) },

@@ -24,6 +24,17 @@
   --radius-pill: 9999px;
   --radius-pin: 1.5rem;
   --color-pin-bg: #f5f0ea;
+
+  --shadow-paper-sm: 1px 2px 0 rgba(26, 26, 26, 0.08),
+    0 6px 16px rgba(26, 26, 26, 0.06);
+  --shadow-paper-md: 2px 3px 0 rgba(26, 26, 26, 0.08),
+    0 10px 24px rgba(26, 26, 26, 0.09);
+  --shadow-paper-lg: 2px 4px 0 rgba(26, 26, 26, 0.09),
+    0 16px 32px rgba(26, 26, 26, 0.12);
+  --shadow-paper-hover: 3px 6px 0 rgba(26, 26, 26, 0.11),
+    0 22px 44px rgba(26, 26, 26, 0.16);
+  --shadow-paper-active: 2px 3px 0 rgba(26, 26, 26, 0.1),
+    0 8px 18px rgba(26, 26, 26, 0.1);
 }
 
 * {
@@ -122,13 +133,23 @@ body {
     8% 95%,
     0% 100%
   );
-  box-shadow: 1px 3px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-paper-sm);
+  transition: box-shadow 0.3s ease;
+}
+
+.note-torn:hover {
+  box-shadow: var(--shadow-paper-hover);
 }
 
 .note-dashed {
   border: 1px dashed var(--color-border-soft);
   border-radius: var(--radius-soft);
-  box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-paper-sm);
+  transition: box-shadow 0.3s ease;
+}
+
+.note-dashed:hover {
+  box-shadow: var(--shadow-paper-hover);
 }
 
 .note-stitched {
@@ -147,18 +168,19 @@ body {
 .nav-tab {
   border: 1px solid var(--color-border-soft);
   border-radius: var(--radius-soft);
-  box-shadow: 1px 2px 0 rgba(0, 0, 0, 0.05);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: var(--shadow-paper-sm);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease;
 }
 
 .nav-tab:hover {
-  transform: translateY(-2px) rotate(-1deg);
-  box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px) scale(1.03) rotate(-1deg);
+  box-shadow: var(--shadow-paper-hover);
 }
 
 .nav-tab-active {
   transform: translateY(-3px) rotate(1deg);
-  box-shadow: 2px 4px 0 rgba(0, 0, 0, 0.09);
+  box-shadow: var(--shadow-paper-lg);
 }
 
 /* Hero: cloud + polaroids share one row height on md+ */
@@ -218,4 +240,15 @@ body {
     var(--color-note-pink) 45%,
     var(--color-note-yellow) 100%
   );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

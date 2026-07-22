@@ -18,14 +18,14 @@ export function PinCard({ pin, index }: PinCardProps) {
 
   return (
     <motion.article
-      className="pin-card mb-4 break-inside-avoid"
+      className="pin-card group mb-4 break-inside-avoid"
       style={{ rotate: `${rotation}deg` }}
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ ...flow, delay: index * 0.05 }}
       whileHover={{ y: -4, scale: 1.01, rotate: 0, transition: { duration: 0.2 } }}
     >
-      <div className="pin-card-inner overflow-hidden bg-white shadow-[0_2px_12px_rgba(0,0,0,0.08)]">
+      <div className="pin-card-inner overflow-hidden bg-white shadow-paper-sm transition-shadow duration-300 group-hover:shadow-paper-hover">
         {hasImage ? (
           <div
             className={`relative w-full overflow-hidden bg-[var(--color-stripe-cream)] ${

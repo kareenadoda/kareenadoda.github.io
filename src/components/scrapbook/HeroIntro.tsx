@@ -83,7 +83,7 @@ export function HeroIntro() {
             className="absolute -top-3 right-10 z-20 w-14"
             rotation={4}
           />
-          <div className="matte-paper border-soft relative bg-[var(--color-note-white)] px-6 py-5 text-center shadow-[2px_3px_0_rgba(0,0,0,0.05)] sm:px-8 sm:py-6">
+          <div className="matte-paper border-soft relative bg-[var(--color-note-white)] px-6 py-5 text-center shadow-paper-sm sm:px-8 sm:py-6">
             <div className="pointer-events-none absolute inset-2 rounded-[calc(var(--radius-soft)-4px)] border border-dashed border-[var(--color-border-soft)]" />
             <p className="relative font-display text-lg font-bold text-[var(--color-ink)] sm:text-xl">
               {profile.tagline}

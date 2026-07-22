@@ -26,9 +26,9 @@ export const images = {
 export type ExperienceImage = {
   src: string;
   alt: string;
-  aspect?: "portrait" | "landscape";
   rotation?: number;
   tapeVariant?: "white" | "pink-stripe" | "pink-dots";
+  objectPosition?: string;
 };
 
 export const education = {
@@ -118,14 +118,12 @@ export const experiences: ExperienceEntry[] = [
       {
         src: images.amazonOffice,
         alt: "Kareena at Amazon NYC office",
-        aspect: "portrait",
         rotation: -3,
         tapeVariant: "white",
       },
       {
         src: images.amazonRooftop,
         alt: "Amazon internship — NYC rooftop",
-        aspect: "landscape",
         rotation: 4,
         tapeVariant: "pink-stripe",
       },
@@ -148,30 +146,27 @@ export const experiences: ExperienceEntry[] = [
       {
         src: "/images/personal/hackathon-presentation.png",
         alt: "Presenting to Senior Management",
-        aspect: "landscape",
         rotation: -3,
         tapeVariant: "white",
       },
       {
         src: "/images/personal/hackathon-team.png",
         alt: "Hackathon Team!",
-        aspect: "portrait",
         rotation: 3,
         tapeVariant: "pink-stripe",
       },
       {
         src: "/images/personal/linkedin-empire-state.png",
         alt: "LinkedIn @ Empire State",
-        aspect: "landscape",
         rotation: -2,
         tapeVariant: "white",
       },
       {
         src: "/images/personal/microsoft-cube-nyc.png",
         alt: "Microsoft Cube in NYC",
-        aspect: "portrait",
         rotation: 4,
         tapeVariant: "pink-stripe",
+        objectPosition: "center 20%",
       },
     ],
     bullets: [
@@ -192,14 +187,13 @@ export const experiences: ExperienceEntry[] = [
       {
         src: images.ideaNextBreathPoster,
         alt: "NextBreath research poster at IDEA showcase",
-        aspect: "landscape",
         rotation: -3,
         tapeVariant: "white",
+        objectPosition: "65% center",
       },
       {
         src: images.ideaHatcheryPresentation,
         alt: "Presentation at The Hatchery — Rutgers IDEA program",
-        aspect: "landscape",
         rotation: 4,
         tapeVariant: "pink-stripe",
       },

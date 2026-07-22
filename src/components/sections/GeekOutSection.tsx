@@ -8,7 +8,7 @@ import { FeatureComments } from "@/components/sections/FeatureComments";
 
 const changeFeatures = [
   {
-    title: "Apple: Emojis Keyboard disappears after one click",
+    title: "Apple: Emoji keyboard disappears after one click",
     body: "If this tab stays longer, the user can spam emojis or type different ones. As of now, the keyboard just closes after one-click. Whatsapp desktop just allowed this on mac with the emoji keyboard.",
   },
   {
@@ -81,7 +81,7 @@ export function GeekOutSection() {
               transition={{ delay: i * 0.05, duration: 0.35 }}
             >
               <div
-                className={`matte-paper border-soft rounded-[var(--radius-soft)] p-4 shadow-[2px_3px_0_rgba(0,0,0,0.05)] ${
+                className={`matte-paper border-soft rounded-[var(--radius-soft)] p-4 shadow-paper-sm ${
                   i % 2 === 0
                     ? "bg-[var(--color-note-white)]/75"
                     : "bg-[var(--color-note-yellow)]/60"
@@ -117,7 +117,7 @@ export function GeekOutSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35 }}
             >
-              <div className="matte-paper border-soft rounded-[var(--radius-soft)] p-4 shadow-[2px_3px_0_rgba(0,0,0,0.05)] bg-[var(--color-note-pink)]/25">
+              <div className="matte-paper border-soft rounded-[var(--radius-soft)] p-4 shadow-paper-sm bg-[var(--color-note-pink)]/25">
                 <p className="font-display text-sm font-bold">{f.title}</p>
                 <p className="mt-2 font-hand text-sm leading-relaxed text-[var(--color-muted)]">
                   {f.body}

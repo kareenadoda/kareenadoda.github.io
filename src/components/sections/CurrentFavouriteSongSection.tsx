@@ -27,7 +27,7 @@ export function CurrentFavouriteSongSection() {
         {favouriteSongs.map((song) => (
           <div
             key={song.src}
-            className="relative aspect-[690/140] min-w-0 flex-1 overflow-hidden rounded-md bg-black shadow-[1px_2px_0_rgba(0,0,0,0.06)]"
+            className="relative aspect-[690/140] min-w-0 flex-1 overflow-hidden rounded-md bg-black shadow-paper-sm"
           >
             <Image
               src={song.src}

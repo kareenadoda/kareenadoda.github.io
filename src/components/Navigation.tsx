@@ -39,7 +39,9 @@ export function Navigation({ active, onChange }: NavigationProps) {
             }}
           >
             {isActive && (
-              <span
+              <motion.span
+                layoutId="active-tab-tape"
+                transition={{ type: "spring", stiffness: 380, damping: 32 }}
                 className="absolute -top-2 left-1/2 z-20 h-5 w-12 -translate-x-1/2 rounded-[2px]"
                 style={{
                   transform: "translateX(-50%) rotate(-3deg)",

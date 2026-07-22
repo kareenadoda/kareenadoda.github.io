@@ -16,7 +16,7 @@ export function LabelTag({
 
   return (
     <span
-      className={`border-soft relative inline-block rounded-[var(--radius-soft-sm)] px-4 py-1.5 font-display text-sm font-bold shadow-[1px_2px_0_rgba(0,0,0,0.05)] ${bg} ${className}`}
+      className={`border-soft relative inline-block rounded-[var(--radius-soft-sm)] px-4 py-1.5 font-display text-sm font-bold shadow-paper-sm ${bg} ${className}`}
     >
       <span
         className="pointer-events-none absolute inset-1 rounded-[0.65rem] border border-dashed border-white/50"

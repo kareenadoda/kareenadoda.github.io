@@ -43,7 +43,7 @@ function ExperienceCard({
               rotation={-5}
             />
             <div
-              className="border-soft relative overflow-hidden rounded-[var(--radius-soft-sm)] bg-white p-1.5 shadow-[1px_2px_0_rgba(0,0,0,0.05)]"
+              className="border-soft relative overflow-hidden rounded-[var(--radius-soft-sm)] bg-white p-1.5 shadow-paper-sm"
               style={{ rotate: "-1deg" }}
             >
               <div className="relative aspect-[16/10] w-full overflow-hidden">

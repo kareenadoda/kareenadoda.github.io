@@ -1,7 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { WashiTape } from "./WashiTape";
 
 type Aspect = "portrait" | "landscape" | "square";
@@ -39,14 +40,47 @@ export function PhotoPolaroid({
   objectPosition = "center",
   matchRowHeight = false,
 }: PhotoPolaroidProps) {
+  const cardRef = useRef<HTMLElement>(null);
+  const pointerX = useMotionValue(0);
+  const pointerY = useMotionValue(0);
+  const springConfig = { stiffness: 300, damping: 22, mass: 0.6 };
+  const rotateX = useSpring(
+    useTransform(pointerY, [-0.5, 0.5], [7, -7]),
+    springConfig
+  );
+  const rotateY = useSpring(
+    useTransform(pointerX, [-0.5, 0.5], [-7, 7]),
+    springConfig
+  );
+
+  function handlePointerMove(e: React.MouseEvent<HTMLElement>) {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    pointerX.set((e.clientX - rect.left) / rect.width - 0.5);
+    pointerY.set((e.clientY - rect.top) / rect.height - 0.5);
+  }
+
+  function handlePointerLeave() {
+    pointerX.set(0);
+    pointerY.set(0);
+  }
+
   return (
     <motion.figure
-      className={`relative shrink-0 ${matchRowHeight ? "flex h-full flex-col" : ""} ${className}`}
-      style={{ rotate: `${rotation}deg` }}
+      ref={cardRef}
+      className={`group relative shrink-0 ${matchRowHeight ? "flex h-full flex-col" : ""} ${className}`}
+      style={{
+        rotate: rotation,
+        rotateX,
+        rotateY,
+        transformPerspective: 700,
+      }}
       initial={{ opacity: 0, y: 16, scale: 0.96 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ type: "spring", stiffness: 200, damping: 22 }}
-      whileHover={{ scale: 1.02, rotate: rotation + 1 }}
+      whileHover={{ scale: 1.03, rotate: rotation + 1 }}
+      onMouseMove={handlePointerMove}
+      onMouseLeave={handlePointerLeave}
     >
       <WashiTape
         variant={tapeVariant}
@@ -54,7 +88,7 @@ export function PhotoPolaroid({
         rotation={-4}
       />
       <div
-        className={`matte-paper border-soft flex flex-col overflow-hidden rounded-[var(--radius-soft)] bg-white p-2 pb-3 shadow-[2px_3px_0_rgba(0,0,0,0.06)] ${
+        className={`matte-paper border-soft flex flex-col overflow-hidden rounded-[var(--radius-soft)] bg-white p-2 pb-3 shadow-paper-sm transition-shadow duration-300 group-hover:shadow-paper-hover ${
           matchRowHeight ? "h-full min-h-0 flex-1" : ""
         }`}
       >

@@ -35,13 +35,13 @@ export function SectionPanel({ active }: SectionPanelProps) {
   const isPinterest = active === "personal-life";
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="popLayout" initial={false}>
       <motion.div
         key={active}
-        initial={{ opacity: 0, y: 20, rotate: isPinterest ? 0 : -1 }}
+        initial={{ opacity: 0, y: 14, rotate: isPinterest ? 0 : -1 }}
         animate={{ opacity: 1, y: 0, rotate: 0 }}
-        exit={{ opacity: 0, y: -12, rotate: isPinterest ? 0 : 1 }}
-        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        exit={{ opacity: 0, y: -10, rotate: isPinterest ? 0 : 1 }}
+        transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
         className="relative"
       >
         {isPinterest ? (

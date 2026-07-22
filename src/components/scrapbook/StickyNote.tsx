@@ -46,14 +46,20 @@ export function StickyNote({
       ? "note-torn"
       : variant === "dashed"
         ? "note-dashed"
-        : "shadow-[1px_2px_0_rgba(0,0,0,0.05)]";
+        : "shadow-paper-sm transition-shadow duration-300";
+
+  const hoverShadowClass =
+    variant === "plain" ? "hover:shadow-paper-hover" : "";
 
   return (
     <motion.div
-      className={`note-stitched border-soft relative p-5 sm:p-6 ${matteClasses[color]} ${variantClass} ${className}`}
+      className={`note-stitched border-soft relative p-5 sm:p-6 ${matteClasses[color]} ${variantClass} ${hoverShadowClass} ${className}`}
       whileHover={
         hoverWiggle
-          ? { rotate: [-0.5, 0.5, -0.3, 0], transition: { duration: 0.4 } }
+          ? {
+              y: -4,
+              transition: { duration: 0.25, ease: "easeOut" },
+            }
           : undefined
       }
     >

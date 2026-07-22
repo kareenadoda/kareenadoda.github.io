@@ -116,7 +116,7 @@ export function FeatureComments() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
-        className="matte-paper border-soft rounded-[var(--radius-soft)] bg-[var(--color-note-white)]/80 p-4 shadow-[2px_3px_0_rgba(0,0,0,0.05)] sm:p-5"
+        className="matte-paper border-soft rounded-[var(--radius-soft)] bg-[var(--color-note-white)]/80 p-4 shadow-paper-sm sm:p-5"
       >
         {submitted ? (
           <p className="font-hand text-sm leading-relaxed text-[var(--color-muted)]">
@@ -177,7 +177,7 @@ export function FeatureComments() {
             <button
               type="submit"
               disabled={submitting}
-              className="rounded-[var(--radius-pill)] border border-[var(--color-border-soft)] bg-[var(--color-note-pink)] px-5 py-2 font-display text-sm font-bold text-[var(--color-ink)] shadow-[2px_2px_0_rgba(0,0,0,0.06)] transition hover:bg-[var(--color-note-pink-deep)] disabled:opacity-60"
+              className="rounded-[var(--radius-pill)] border border-[var(--color-border-soft)] bg-[var(--color-note-pink)] px-5 py-2 font-display text-sm font-bold text-[var(--color-ink)] shadow-paper-sm transition hover:shadow-paper-hover hover:bg-[var(--color-note-pink-deep)] disabled:opacity-60"
             >
               {submitting ? "Sending…" : "Drop comment"}
             </button>
@@ -201,7 +201,7 @@ export function FeatureComments() {
             {comments.map((c) => (
               <li
                 key={c.id}
-                className="matte-paper border-soft rounded-[var(--radius-soft-sm)] bg-[var(--color-note-yellow)]/40 px-4 py-3 shadow-[1px_2px_0_rgba(0,0,0,0.04)]"
+                className="matte-paper border-soft rounded-[var(--radius-soft-sm)] bg-[var(--color-note-yellow)]/40 px-4 py-3 shadow-paper-sm"
               >
                 <p className="font-display text-xs font-bold text-[var(--color-ink)]">
                   {formatAuthor(c.display_name)}
