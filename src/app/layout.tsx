@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fredoka, Nunito, Patrick_Hand } from "next/font/google";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
 const fredoka = Fredoka({
@@ -36,7 +37,7 @@ export default function RootLayout({
       <body
         className={`${fredoka.variable} ${nunito.variable} ${patrickHand.variable} min-h-screen antialiased`}
       >
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );
