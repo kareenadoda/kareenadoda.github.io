@@ -18,6 +18,8 @@ export const images = {
   amazonOffice: "/images/amazon-office.png",
   amazonRooftop: "/images/amazon-rooftop.png",
   amazonSantaClara: "/images/amazon-santa-clara.png",
+  amazonSantaClaraMirror: "/images/amazon-santa-clara-mirror.jpg",
+  amazonSantaClaraCourtyard: "/images/amazon-santa-clara-courtyard.jpg",
   ideaNextBreathPoster: "/images/idea-nextbreath-poster.png",
   ideaHatcheryPresentation: "/images/idea-hatchery-presentation.png",
   rutgersLogo: "/images/rutgers-logo.png",
@@ -81,15 +83,37 @@ export type ExperienceEntry = {
 export const experiences: ExperienceEntry[] = [
   {
     id: "amazon-2026",
-    organization: "Amazon",
+    organization: "Amazon - Rufus Team",
     location: "Santa Clara, CA",
     role: "Software Development Engineer Intern",
     period: "May 2026 – Aug 2026",
     kind: "work",
     image: images.amazonSantaClara,
     imageAlt: "View from Amazon Santa Clara office",
+    gallery: [
+      {
+        src: images.amazonSantaClara,
+        alt: "View from office",
+        rotation: -2,
+        tapeVariant: "pink-dots",
+      },
+      {
+        src: images.amazonSantaClaraCourtyard,
+        alt: "SJC38",
+        rotation: 4,
+        tapeVariant: "pink-stripe",
+      },
+      {
+        src: images.amazonSantaClaraMirror,
+        alt: "Me @ office!",
+        rotation: -3,
+        tapeVariant: "white",
+      },
+    ],
     bullets: [
-      "Working on the Rufus (Alexa for Shopping) team to learn more about agents and caching.",
+      "Designed and created a caching layer for Amazon Rufus' WebSearch tool to reduce latency and redundant data retrieval.",
+      "Caching infrastructure was tested with production traffic and is expected to be used by 70 million users on Amazon.com.",
+      "Worked with DynamoDB to store cache, CloudWatch to monitor metrics and logs, and Weblab-gated rollout/testing.",
     ],
   },
   {
@@ -109,7 +133,7 @@ export const experiences: ExperienceEntry[] = [
   },
   {
     id: "amazon",
-    organization: "Amazon",
+    organization: "Amazon - Grocery Team",
     location: "New York, NY",
     role: "Software Development Engineer Intern",
     period: "May 2025 – Aug 2025",
@@ -117,7 +141,7 @@ export const experiences: ExperienceEntry[] = [
     gallery: [
       {
         src: images.amazonOffice,
-        alt: "Kareena at Amazon NYC office",
+        alt: "Me @ JFK offices",
         rotation: -3,
         tapeVariant: "white",
       },
@@ -275,51 +299,29 @@ export const projects: ProjectEntry[] = [
     ],
   },
   {
-    id: "ru-cafe-android",
-    title: "RU Cafe",
-    period: "Dec 2025",
-    tags: ["Java", "Android", "Gradle", "MVC", "RecyclerView"],
-    href: "https://github.com/KBhalodia/Project5",
-    bullets: [
-      "Android port of our JavaFX cafe POS — multi-screen app for donuts, coffee, sandwiches, and order management.",
-      "Shared OrderManager keeps cart state across activities; RecyclerView adapters for custom menu options.",
-      "Capstone mobile build co-developed with Kavya Bhalodia; mirrors the desktop RUDonuts workflow on API 24+.",
-    ],
-  },
-  {
     id: "rudonuts-javafx",
     title: "RUDonuts",
-    period: "Nov 2025",
-    tags: ["Java", "JavaFX", "FXML", "MVC", "JUnit"],
+    period: "Nov – Dec 2025",
+    tags: ["Java", "JavaFX", "Android", "MVC", "JUnit", "RecyclerView"],
     href: "https://github.com/KBhalodia/GUI-programming-with-JavaFX-4",
     bullets: [
       "JavaFX point-of-sale system with dynamic pricing for donuts, coffee, and sandwiches.",
       "Multi-screen MVC architecture — FXML controllers, live order totals with tax, and export to StoreOrders.txt.",
-      "JUnit tests for coffee and sandwich pricing; co-developed with Kavya Bhalodia.",
+      "Ported to Android as RU Cafe: shared OrderManager keeps cart state across activities, with RecyclerView adapters mirroring the desktop workflow on API 24+.",
+      "JUnit tests for coffee and sandwich pricing across both builds; co-developed with Kavya Bhalodia.",
     ],
   },
   {
     id: "ru-fleet-inheritance",
     title: "RU Fleet System",
-    period: "Oct 2025",
-    tags: ["Java", "Inheritance", "Polymorphism", "JUnit", "Data Structures"],
+    period: "Sep – Oct 2025",
+    tags: ["Java", "OOP", "MVC", "CLI", "Inheritance", "Polymorphism", "JUnit", "Data Structures"],
     href: "https://github.com/KBhalodia/Project-2-Inheritance-Polymorphism",
     bullets: [
-      "Fleet management CLI extended with Sedan, Truck, and Utility vehicle subtypes and campus-based pricing.",
+      "Command-line fleet manager for vehicles, employee bookings, trips, and department-based reporting, built on an MVC design with validated input for dates, makes, mileage, and booking conflicts.",
+      "Extended with Sedan, Truck, and Utility vehicle subtypes via inheritance and polymorphism, plus campus-based pricing.",
       "Custom growable List and Sort utilities (no ArrayList); file-based fleet loading from vehicles.txt.",
       "JUnit tests for date validation, surcharges, and vehicle comparison — co-developed with Kavya Bhalodia.",
-    ],
-  },
-  {
-    id: "vehicle-management",
-    title: "Vehicle Management System",
-    period: "Sep 2025",
-    tags: ["Java", "OOP", "MVC", "CLI"],
-    href: "https://github.com/KBhalodia/Project-1-OOP",
-    bullets: [
-      "Command-line fleet manager for vehicles, employee bookings, trips, and department-based reporting.",
-      "MVC design with validated input for dates, makes, mileage, and booking conflicts.",
-      "Foundation OOP coursework project co-developed with Kavya Bhalodia.",
     ],
   },
   {
