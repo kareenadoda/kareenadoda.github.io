@@ -114,6 +114,7 @@ export const experiences: ExperienceEntry[] = [
       "Designed and created a caching layer for Amazon Rufus' WebSearch tool to reduce latency and redundant data retrieval.",
       "Caching infrastructure was tested with production traffic and is expected to be used by 70 million users on Amazon.com.",
       "Worked with DynamoDB to store cache, CloudWatch to monitor metrics and logs, and Weblab-gated rollout/testing.",
+      "Built with configurable cache-key fields and adjustable TTLs (in Java), improving tool-response latency by 92.7%.",
     ],
   },
   {
@@ -153,10 +154,11 @@ export const experiences: ExperienceEntry[] = [
       },
     ],
     bullets: [
-      "SDE Intern on the Grocery Shopping Experience team under the Loyalty & Rewards charter.",
-      "Spearheaded an MCP server to automate merchant onboarding and loyalty integrations.",
-      "Built a full-stack system with AWS, Bedrock, and a custom MCP client — cut review time from 6 to 2 weeks.",
+      "Worked on an MCP server to automate merchant onboarding and loyalty integrations.",
+      "Built a full-stack system with AWS, Bedrock, and a custom MCP client — cutting review time from 6 to 2 weeks.",
       "Engineered prompts to fine-tune LLM behavior for code quality and contextual accuracy in production.",
+      "Automated 13 previously manual integration steps end-to-end, built with TypeScript and JavaScript.",
+      "Integrated additional tools & packages into the MCP architecture, adapting them for team-specific merchant workflows.",
     ],
   },
   {
