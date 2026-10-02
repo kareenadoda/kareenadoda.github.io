@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { sections, type SectionId } from "@/lib/sections";
+import { useMagnetic } from "@/lib/useMagnetic";
 
 const tabMatte: Record<SectionId, string> = {
   about: "matte-yellow",
@@ -22,41 +23,75 @@ export function Navigation({ active, onChange }: NavigationProps) {
       {sections.map((section, i) => {
         const isActive = active === section.id;
         return (
-          <motion.button
+          <NavTab
             key={section.id}
-            type="button"
+            index={i}
+            isActive={isActive}
+            label={section.label}
+            matteClass={tabMatte[section.id]}
             onClick={() => onChange(section.id)}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45 + i * 0.06 }}
-            className={`nav-tab relative px-4 py-2.5 font-display text-sm font-semibold sm:px-5 sm:text-base ${tabMatte[section.id]} ${
-              isActive ? "nav-tab-active" : ""
-            }`}
-            style={{
-              rotate: isActive
-                ? `${(i % 2 === 0 ? 1 : -1) * 2}deg`
-                : `${(i % 2 === 0 ? -1 : 1)}deg`,
-            }}
-          >
-            {isActive && (
-              <motion.span
-                layoutId="active-tab-tape"
-                transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                className="absolute -top-2 left-1/2 z-20 h-5 w-12 -translate-x-1/2 rounded-[2px]"
-                style={{
-                  transform: "translateX(-50%) rotate(-3deg)",
-                  backgroundColor: "var(--color-tape-pink)",
-                  backgroundImage:
-                    "repeating-linear-gradient(-45deg, transparent, transparent 3px, rgba(255,255,255,0.35) 3px, rgba(255,255,255,0.35) 6px)",
-                  opacity: 0.9,
-                }}
-                aria-hidden
-              />
-            )}
-            <span className="relative">{section.label}</span>
-          </motion.button>
+          />
         );
       })}
     </nav>
+  );
+}
+
+function NavTab({
+  index,
+  isActive,
+  label,
+  matteClass,
+  onClick,
+}: {
+  index: number;
+  isActive: boolean;
+  label: string;
+  matteClass: string;
+  onClick: () => void;
+}) {
+  const magnetic = useMagnetic<HTMLButtonElement>({ strength: 0.18, max: 8 });
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.45 + index * 0.06 }}
+    >
+      <motion.button
+        ref={magnetic.ref}
+        type="button"
+        onClick={onClick}
+        onMouseMove={magnetic.onMouseMove}
+        onMouseLeave={magnetic.onMouseLeave}
+        className={`nav-tab relative px-4 py-2.5 font-display text-sm font-semibold sm:px-5 sm:text-base ${matteClass} ${
+          isActive ? "nav-tab-active" : ""
+        }`}
+        style={{
+          rotate: isActive
+            ? `${(index % 2 === 0 ? 1 : -1) * 2}deg`
+            : `${index % 2 === 0 ? -1 : 1}deg`,
+          x: magnetic.x,
+          y: magnetic.y,
+        }}
+      >
+        {isActive && (
+          <motion.span
+            layoutId="active-tab-tape"
+            transition={{ type: "spring", stiffness: 380, damping: 32 }}
+            className="absolute -top-2 left-1/2 z-20 h-5 w-12 -translate-x-1/2 rounded-[2px]"
+            style={{
+              transform: "translateX(-50%) rotate(-3deg)",
+              backgroundColor: "var(--color-tape-pink)",
+              backgroundImage:
+                "repeating-linear-gradient(-45deg, transparent, transparent 3px, rgba(255,255,255,0.35) 3px, rgba(255,255,255,0.35) 6px)",
+              opacity: 0.9,
+            }}
+            aria-hidden
+          />
+        )}
+        <span className="relative">{label}</span>
+      </motion.button>
+    </motion.div>
   );
 }

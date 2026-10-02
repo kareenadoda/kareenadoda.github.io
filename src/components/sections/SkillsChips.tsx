@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { skills } from "@/lib/profile";
+import { useMagnetic } from "@/lib/useMagnetic";
 
 const flowSpring = { type: "spring" as const, stiffness: 140, damping: 18, mass: 0.65 };
 
@@ -64,10 +65,16 @@ function SkillChip({
   isActive: boolean;
   onHover: () => void;
 }) {
+  const magnetic = useMagnetic<HTMLSpanElement>({ strength: 0.12, max: 5 });
+
   return (
-    <span
+    <motion.span
+      ref={magnetic.ref}
       className="relative inline-block cursor-default px-2 py-1"
+      style={{ x: magnetic.x, y: magnetic.y }}
       onMouseEnter={onHover}
+      onMouseMove={magnetic.onMouseMove}
+      onMouseLeave={magnetic.onMouseLeave}
       onFocus={onHover}
       tabIndex={0}
       role="presentation"
@@ -88,6 +95,6 @@ function SkillChip({
       >
         {name}
       </motion.span>
-    </span>
+    </motion.span>
   );
 }

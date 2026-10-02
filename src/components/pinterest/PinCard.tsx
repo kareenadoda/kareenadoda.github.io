@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import type { PersonalPin } from "@/lib/personal-life";
+import { useMagnetic } from "@/lib/useMagnetic";
 
 const flow = { type: "spring" as const, stiffness: 260, damping: 28 };
 
@@ -15,16 +16,24 @@ export function PinCard({ pin, index }: PinCardProps) {
   const hasImage = Boolean(pin.image);
   const hasText = Boolean(pin.title || pin.caption);
   const rotation = index % 3 === 0 ? -0.6 : index % 3 === 1 ? 0.5 : -0.3;
+  const magnetic = useMagnetic<HTMLElement>({ strength: 0.1, max: 8, lift: -4 });
 
   return (
-    <motion.article
-      className="pin-card group mb-4 break-inside-avoid"
-      style={{ rotate: `${rotation}deg` }}
+    <motion.div
+      className="mb-4 break-inside-avoid"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ ...flow, delay: index * 0.05 }}
-      whileHover={{ y: -4, scale: 1.01, rotate: 0, transition: { duration: 0.2 } }}
     >
+      <motion.article
+        ref={magnetic.ref}
+        className="pin-card group"
+        style={{ rotate: `${rotation}deg`, x: magnetic.x, y: magnetic.y }}
+        whileHover={{ scale: 1.01, rotate: 0, transition: { duration: 0.2 } }}
+        onMouseMove={magnetic.onMouseMove}
+        onMouseEnter={magnetic.onMouseEnter}
+        onMouseLeave={magnetic.onMouseLeave}
+      >
       <div className="pin-card-inner overflow-hidden bg-white shadow-paper-sm transition-shadow duration-300 group-hover:shadow-paper-hover">
         {hasImage ? (
           <div
@@ -78,6 +87,7 @@ export function PinCard({ pin, index }: PinCardProps) {
           </div>
         )}
       </div>
-    </motion.article>
+      </motion.article>
+    </motion.div>
   );
 }

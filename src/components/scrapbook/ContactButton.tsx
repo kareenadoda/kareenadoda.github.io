@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { contactLinks } from "@/lib/profile";
 import { WashiTape } from "./WashiTape";
+import { useMagnetic } from "@/lib/useMagnetic";
 
 /** Fan arc: each card pivots from the contact button (bottom-right). */
 const fanLayout = [
@@ -24,6 +25,7 @@ const spring = { type: "spring" as const, stiffness: 220, damping: 26 };
 
 export function ContactButton() {
   const [open, setOpen] = useState(false);
+  const magnetic = useMagnetic<HTMLButtonElement>({ strength: 0.18, max: 10 });
 
   return (
     <div className="fixed bottom-6 right-5 z-50 sm:bottom-8 sm:right-8">
@@ -95,10 +97,13 @@ export function ContactButton() {
         </AnimatePresence>
 
         <motion.button
+          ref={magnetic.ref}
           type="button"
           onClick={() => setOpen((v) => !v)}
+          onMouseMove={magnetic.onMouseMove}
+          onMouseLeave={magnetic.onMouseLeave}
           className="nav-tab relative matte-pink z-[60] px-5 py-3 font-display text-sm font-bold sm:text-base"
-          style={{ rotate: open ? "0deg" : "-2deg" }}
+          style={{ rotate: open ? "0deg" : "-2deg", x: magnetic.x, y: magnetic.y }}
           animate={{ scale: 1 }}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}

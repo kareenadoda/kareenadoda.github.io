@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { WashiTape } from "./WashiTape";
 import { PinkBlob } from "./PinkBlob";
+import { useMagnetic } from "@/lib/useMagnetic";
 
 type NoteColor = "white" | "yellow" | "pink";
 type NoteStyle = "plain" | "torn" | "dashed";
@@ -51,17 +52,20 @@ export function StickyNote({
   const hoverShadowClass =
     variant === "plain" ? "hover:shadow-paper-hover" : "";
 
+  const magnetic = useMagnetic<HTMLDivElement>({
+    strength: 0.1,
+    max: 8,
+    lift: hoverWiggle ? -4 : 0,
+  });
+
   return (
     <motion.div
+      ref={magnetic.ref}
       className={`note-stitched border-soft relative p-5 sm:p-6 ${matteClasses[color]} ${variantClass} ${hoverShadowClass} ${className}`}
-      whileHover={
-        hoverWiggle
-          ? {
-              y: -4,
-              transition: { duration: 0.25, ease: "easeOut" },
-            }
-          : undefined
-      }
+      style={{ x: magnetic.x, y: magnetic.y }}
+      onMouseMove={magnetic.onMouseMove}
+      onMouseEnter={magnetic.onMouseEnter}
+      onMouseLeave={magnetic.onMouseLeave}
     >
       {tape && (
         <WashiTape

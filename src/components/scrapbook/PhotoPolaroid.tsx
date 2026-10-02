@@ -43,7 +43,10 @@ export function PhotoPolaroid({
   const cardRef = useRef<HTMLElement>(null);
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
+  const dragX = useMotionValue(0);
+  const dragY = useMotionValue(0);
   const springConfig = { stiffness: 300, damping: 22, mass: 0.6 };
+  const dragSpringConfig = { stiffness: 250, damping: 18, mass: 0.4 };
   const rotateX = useSpring(
     useTransform(pointerY, [-0.5, 0.5], [7, -7]),
     springConfig
@@ -52,32 +55,43 @@ export function PhotoPolaroid({
     useTransform(pointerX, [-0.5, 0.5], [-7, 7]),
     springConfig
   );
+  const magneticX = useSpring(dragX, dragSpringConfig);
+  const magneticY = useSpring(dragY, dragSpringConfig);
 
   function handlePointerMove(e: React.MouseEvent<HTMLElement>) {
     const rect = cardRef.current?.getBoundingClientRect();
     if (!rect) return;
     pointerX.set((e.clientX - rect.left) / rect.width - 0.5);
     pointerY.set((e.clientY - rect.top) / rect.height - 0.5);
+    dragX.set(Math.max(-10, Math.min(10, (e.clientX - rect.left - rect.width / 2) * 0.06)));
+    dragY.set(Math.max(-10, Math.min(10, (e.clientY - rect.top - rect.height / 2) * 0.06)));
   }
 
   function handlePointerLeave() {
     pointerX.set(0);
     pointerY.set(0);
+    dragX.set(0);
+    dragY.set(0);
   }
 
   return (
+    <motion.div
+      className={`shrink-0 ${matchRowHeight ? "flex h-full flex-col" : ""} ${className}`}
+      initial={{ opacity: 0, y: 16, scale: 0.96 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ type: "spring", stiffness: 200, damping: 22 }}
+    >
     <motion.figure
       ref={cardRef}
-      className={`group relative shrink-0 ${matchRowHeight ? "flex h-full flex-col" : ""} ${className}`}
+      className={`group relative ${matchRowHeight ? "flex h-full flex-col" : ""}`}
       style={{
         rotate: rotation,
         rotateX,
         rotateY,
+        x: magneticX,
+        y: magneticY,
         transformPerspective: 700,
       }}
-      initial={{ opacity: 0, y: 16, scale: 0.96 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ type: "spring", stiffness: 200, damping: 22 }}
       whileHover={{ scale: 1.03, rotate: rotation + 1 }}
       onMouseMove={handlePointerMove}
       onMouseLeave={handlePointerLeave}
@@ -119,5 +133,6 @@ export function PhotoPolaroid({
         )}
       </div>
     </motion.figure>
+    </motion.div>
   );
 }

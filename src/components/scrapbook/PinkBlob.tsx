@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useMagnetic } from "@/lib/useMagnetic";
 
 type PinkBlobProps = {
   children: React.ReactNode;
@@ -33,12 +34,18 @@ export function PinkBlob({
       ? `scale(${blobBackgroundScale}) translateX(${blobBackgroundOffsetX})`
       : undefined;
 
+  const magnetic = useMagnetic<HTMLDivElement>({ strength: 0.06, max: 10 });
+
   return (
     <motion.div
+      ref={magnetic.ref}
       className={`relative mx-auto overflow-visible ${dimensions} ${className}`}
+      style={{ x: magnetic.x, y: magnetic.y }}
       initial={{ scale: 0.92, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
+      onMouseMove={magnetic.onMouseMove}
+      onMouseLeave={magnetic.onMouseLeave}
     >
       <div className="relative aspect-[520/220] w-full overflow-visible">
         <svg
