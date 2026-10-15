@@ -15,12 +15,12 @@ const rethinkFeatures: FeatureNote[] = [
     brand: "Apple",
     platform: "macOS",
     title: "Keep the emoji picker open",
-    body: "Let me add a few emojis without reopening the picker after every click. A tiny change that would make conversations feel a little more effortless. WhatsApp desktop on Mac already does this!",
+    body: "I want to add a few emojis without reopening the picker after every click. A tiny change that would make typing more effortless - the WhatsApp desktop keyboard enabled this a while ago!",
   },
   {
     brand: "Gmail",
     title: "Rename an attachment, not the original",
-    body: "Give an attachment a cleaner name just for the email. My laptop can keep “final-final”—the person receiving it doesn’t need to see that.",
+    body: "Give an attachment a cleaner name just for the email. My laptop can keep “final-final”—the person receiving it doesn’t need to see that!!",
   },
   {
     brand: "LinkedIn",
@@ -33,18 +33,18 @@ const loveFeatures: FeatureNote[] = [
   {
     brand: "WhatsApp",
     title: "Call just a few people from a group",
-    body: "Start a group call with only the people you pick—so friends who are napping don’t get woken up.",
+    body: "Start a group call with only the people you pick—so friends who are napping don’t get woken up : )",
   },
   {
     brand: "Apple",
     title: "Motion cues",
-    body: "Not sure if it’s placebo or science (if Apple shipped it, I’m guessing science 👀), but it definitely works on me.",
+    body: "Not sure if it’s placebo or science (if Apple shipped it, I’m guessing science 👀), but it definitely works on my roommate and me.",
   },
   {
     brand: "Spotify",
     platform: "Desktop",
     title: "Sleep timer, finally on desktop",
-    body: "The sleep timer finally made it to the desktop app. Small, but I’d been waiting for this one.",
+    body: "The sleep timer finally made it to the desktop app. Small, but I've been waiting for this one for a while.",
   },
 ];
 
@@ -66,7 +66,7 @@ function NoteList({ label, notes }: { label: string; notes: FeatureNote[] }) {
             transition={{ delay: i * 0.05, duration: 0.35, ease }}
             className="py-6"
           >
-            <p className="text-xs font-bold text-[var(--color-rose-ink)]">
+            <p className="text-sm font-bold text-[var(--color-rose-ink)]">
               {String(i + 1).padStart(2, "0")} / {note.brand.toUpperCase()}
               {note.platform && ` · ${note.platform}`}
             </p>
