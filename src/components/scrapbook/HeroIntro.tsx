@@ -6,7 +6,19 @@ import { WashiTape } from "./WashiTape";
 import { PhotoPolaroid } from "./PhotoPolaroid";
 import { profile, images } from "@/lib/profile";
 
-export function HeroIntro() {
+type HeroIntroProps = {
+  eyebrow?: string;
+  headline?: string;
+  tagline?: string;
+  subline?: string;
+};
+
+export function HeroIntro({
+  eyebrow = "Hello, I'm",
+  headline = "Kareena!",
+  tagline = profile.tagline,
+  subline = profile.introSubline,
+}: HeroIntroProps) {
   return (
     <header className="relative mb-12 sm:mb-14">
       <div className="relative mx-auto w-full max-w-4xl px-1 pt-2">
@@ -25,7 +37,7 @@ export function HeroIntro() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.15 }}
                 >
-                  Hello, I&apos;m
+                  {eyebrow}
                 </motion.span>
                 <motion.span
                   className="max-w-full font-display text-4xl font-bold leading-none tracking-tight text-[var(--color-ink)] sm:text-5xl md:text-6xl lg:text-7xl"
@@ -33,7 +45,7 @@ export function HeroIntro() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.25, type: "spring", stiffness: 200 }}
                 >
-                  Kareena!
+                  {headline}
                 </motion.span>
               </PinkBlob>
             </div>
@@ -86,10 +98,10 @@ export function HeroIntro() {
           <div className="matte-paper border-soft relative bg-[var(--color-note-white)] px-6 py-5 text-center shadow-paper-sm sm:px-8 sm:py-6">
             <div className="pointer-events-none absolute inset-2 rounded-[calc(var(--radius-soft)-4px)] border border-dashed border-[var(--color-border-soft)]" />
             <p className="relative font-display text-lg font-bold text-[var(--color-ink)] sm:text-xl">
-              {profile.tagline}
+              {tagline}
             </p>
             <p className="relative mt-3 font-hand text-base leading-relaxed text-[var(--color-ink)] sm:text-lg">
-              {profile.introSubline}
+              {subline}
             </p>
           </div>
         </motion.div>

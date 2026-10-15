@@ -37,7 +37,7 @@ export function Navigation({ active, onChange }: NavigationProps) {
   );
 }
 
-function NavTab({
+export function NavTab({
   index,
   isActive,
   label,
