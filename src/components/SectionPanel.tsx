@@ -53,8 +53,10 @@ export function SectionPanel({ active }: SectionPanelProps) {
         ) : (
           <StickyNote
             color={sectionNoteColor[active]}
-            variant={active === "geek-out" ? "dashed" : "plain"}
-            tape={false}
+            variant="plain"
+            tape={active === "geek-out"}
+            tapeVariant="yellow"
+            hoverWiggle={active !== "geek-out"}
             className="relative z-10"
           >
             <Component />

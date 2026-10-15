@@ -22,25 +22,28 @@ export default function Home() {
           active === "personal-life" ? "max-w-5xl" : "max-w-4xl"
         }`}
       >
-        <HeroIntro />
+        {/* Keep the header the same width when Life widens <main> for its board */}
+        <div className="mx-auto max-w-[52rem]">
+          <HeroIntro />
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="mb-8"
-        >
-          <Navigation active={active} onChange={setActive} />
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="mb-8"
+          >
+            <Navigation active={active} onChange={setActive} />
+          </motion.div>
 
-        <motion.p
-          key={current.subtitle}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="mb-5 text-center font-hand text-base text-[var(--color-muted)]"
-        >
-          🌻 {current.subtitle} 💫
-        </motion.p>
+          <motion.p
+            key={current.subtitle}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mb-5 text-center font-hand text-base text-[var(--color-muted)]"
+          >
+            🌻 {current.subtitle} 💫
+          </motion.p>
+        </div>
 
         <SectionPanel active={active} />
 

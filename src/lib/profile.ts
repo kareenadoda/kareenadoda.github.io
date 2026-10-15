@@ -43,29 +43,41 @@ export const education = {
   logoAlt: "Rutgers University Block R logo",
 };
 
-export const skills = {
-  languagesAndTools: [
-    "Java",
-    "TypeScript",
-    "JavaScript",
-    "Python",
-    "SQL",
-    "Node.js",
-    "React Native",
-    "FastAPI",
-    "Git",
-    "Docker",
-    "REST APIs",
-  ],
-  cloudAndAi: [
-    "AWS",
-    "Amazon Bedrock",
-    "Cache-Augmented Generation (CAG)",
-    "Model Context Protocol (MCP)",
-    "LLM Integration",
-    "Prompt Engineering",
-  ],
-} as const;
+export const skills = [
+  "Java",
+  "Python",
+  "TypeScript",
+  "JavaScript",
+  "C",
+  "SQL",
+  "React.js",
+  "React Native",
+  "Node.js",
+  "FastAPI",
+  "AWS",
+  "Bedrock",
+  "DynamoDB",
+  "Git",
+  "Docker",
+  "MCP",
+  "REST APIs",
+  "RAG",
+  "Cache-Augmented Generation (CAG)",
+  "Prompt Engineering",
+  "LLM Integration",
+  "SQLite",
+  "Power BI",
+  "Tableau",
+  "Claude Code",
+  "Azure",
+  "CI/CD",
+  "WebSockets",
+  "PyTorch",
+  "TensorFlow",
+  "LangChain",
+  "Redis",
+  "Pandas",
+] as const;
 
 export type ExperienceEntry = {
   id: string;
@@ -122,7 +134,7 @@ export const experiences: ExperienceEntry[] = [
     organization: "Rutgers University — Dept. of Computer Science",
     location: "New Brunswick, NJ",
     role: "Lead Learning Assistant — Data Structures",
-    period: "Aug 2025 – May 2025 · Learning Assistant (Aug 2024 – May 2025)",
+    period: "Aug 2025 – May 2025",
     kind: "work",
     bullets: [
       "Promoted to Lead LA: manage a team of 30 learning assistants as they lead recitation classes.",

@@ -4,11 +4,12 @@ import { motion } from "framer-motion";
 import { projects, profile } from "@/lib/profile";
 import { StickyNote } from "@/components/scrapbook/StickyNote";
 import { LabelTag } from "@/components/scrapbook/LabelTag";
+import { SectionHeading } from "@/components/sections/SectionHeading";
 
 export function ProjectsSection() {
   return (
     <div className="space-y-5">
-      <LabelTag className="!px-5 !py-2 !text-lg">Projects</LabelTag>
+      <SectionHeading>Projects</SectionHeading>
 
       <p className="font-hand text-sm leading-relaxed text-[var(--color-muted)]">
         Hackathon builds and Rutgers coursework — more on{" "}

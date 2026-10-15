@@ -2,13 +2,13 @@
 
 import { personalLifePins } from "@/lib/personal-life";
 import { PinCard } from "@/components/pinterest/PinCard";
-import { LabelTag } from "@/components/scrapbook/LabelTag";
+import { SectionHeading } from "@/components/sections/SectionHeading";
 
 export function PersonalLifeSection() {
   return (
     <div className="personal-life-board">
-      <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-        <LabelTag className="!px-5 !py-2 !text-lg">Personal Life</LabelTag>
+      <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+        <SectionHeading>Personal Life</SectionHeading>
         <p className="font-hand text-sm text-[var(--color-muted)]">
           scroll to explore ↓
         </p>

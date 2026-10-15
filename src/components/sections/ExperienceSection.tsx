@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { experiences } from "@/lib/profile";
 import { LabelTag } from "@/components/scrapbook/LabelTag";
+import { SectionHeading } from "@/components/sections/SectionHeading";
 import { StickyNote } from "@/components/scrapbook/StickyNote";
 import { SpotlightGallery } from "@/components/scrapbook/SpotlightGallery";
 import { WashiTape } from "@/components/scrapbook/WashiTape";
@@ -56,26 +57,20 @@ function ExperienceCard({
           </div>
         )}
 
-        <div className="flex flex-wrap items-start justify-between gap-2">
-          <div>
-            <h3 className="font-display text-base font-bold leading-tight sm:text-lg">
-              {entry.organization}
-            </h3>
-            {entry.location && (
-              <p className="font-hand text-xs text-[var(--color-muted)]">
-                {entry.location}
-              </p>
-            )}
-          </div>
-          <LabelTag
-            color={entry.kind === "club" ? "yellow" : "pink"}
-            className="!shrink-0 !px-2 !py-0.5 !text-[10px] sm:!text-xs"
-          >
-            {entry.kind === "club" ? "Club" : "Work"}
-          </LabelTag>
+        <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+          <h3 className="font-display text-base font-bold leading-tight sm:text-lg">
+            {entry.organization}
+          </h3>
+          {entry.location && (
+            <p className="font-hand text-xs text-[var(--color-muted)]">
+              {entry.location}
+            </p>
+          )}
         </div>
-        <p className="mt-2 font-display text-sm font-semibold">{entry.role}</p>
-        <p className="font-hand text-xs text-[var(--color-muted)]">{entry.period}</p>
+        <div className="mt-1 flex flex-wrap items-baseline justify-between gap-x-3">
+          <p className="font-display text-[0.95rem] font-semibold">{entry.role}</p>
+          <p className="font-hand text-[0.8rem] text-[var(--color-muted)]">{entry.period}</p>
+        </div>
         <ul className="mt-3 space-y-1.5">
           {entry.bullets.map((bullet) => (
             <li
@@ -97,10 +92,9 @@ export function ExperienceSection() {
 
   return (
     <div className="space-y-6">
-      <LabelTag className="!px-5 !py-2 !text-lg">Experience</LabelTag>
+      <SectionHeading>Experience</SectionHeading>
 
       <div className="space-y-4">
-        <LabelTag color="yellow">Professional</LabelTag>
         {work.map((entry, i) => (
           <ExperienceCard key={entry.id} entry={entry} index={i} />
         ))}

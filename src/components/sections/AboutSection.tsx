@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { education, profile } from "@/lib/profile";
+import { education } from "@/lib/profile";
 import { LabelTag } from "@/components/scrapbook/LabelTag";
+import { SectionHeading } from "@/components/sections/SectionHeading";
 import { SkillsChips } from "@/components/sections/SkillsChips";
 import { CurrentFavouriteSongSection } from "@/components/sections/CurrentFavouriteSongSection";
 const fadeUp = {
@@ -18,17 +19,10 @@ const fadeUp = {
 export function AboutSection() {
   return (
     <div className="space-y-6">
-      <LabelTag className="!px-5 !py-2 !text-lg">About Me</LabelTag>
-
-      <motion.div custom={0} variants={fadeUp} initial="hidden" animate="show">
-        <p className="font-display text-lg font-semibold">{profile.name}</p>
-        <p className="mt-1 font-hand text-base leading-relaxed text-[var(--color-muted)]">
-          {profile.tagline}
-        </p>
-      </motion.div>
+      <SectionHeading>About Me</SectionHeading>
 
       <motion.div
-        custom={1}
+        custom={0}
         variants={fadeUp}
         initial="hidden"
         animate="show"
@@ -44,7 +38,16 @@ export function AboutSection() {
             <p className="font-hand text-sm text-[var(--color-muted)]">
               {education.minor}
             </p>
-            <div className="mt-3 flex flex-wrap gap-2">
+          </div>
+          <div className="flex shrink-0 flex-col items-end gap-2">
+            <Image
+              src={education.logo}
+              alt={education.logoAlt}
+              width={40}
+              height={40}
+              className="-mt-1 h-9 w-9 object-contain sm:h-10 sm:w-10"
+            />
+            <div className="flex gap-2">
               <LabelTag color="yellow" className="!text-xs">
                 {education.graduation}
               </LabelTag>
@@ -53,18 +56,11 @@ export function AboutSection() {
               </LabelTag>
             </div>
           </div>
-          <Image
-            src={education.logo}
-            alt={education.logoAlt}
-            width={40}
-            height={40}
-            className="mt-0.5 h-9 w-9 shrink-0 object-contain sm:h-10 sm:w-10"
-          />
         </div>
       </motion.div>
 
       <motion.div
-        custom={2}
+        custom={1}
         variants={fadeUp}
         initial="hidden"
         animate="show"
@@ -75,7 +71,7 @@ export function AboutSection() {
       </motion.div>
 
       <motion.div
-        custom={3}
+        custom={2}
         variants={fadeUp}
         initial="hidden"
         animate="show"
@@ -102,7 +98,7 @@ export function AboutSection() {
       </motion.div>
 
       <motion.div
-        custom={4}
+        custom={3}
         variants={fadeUp}
         initial="hidden"
         animate="show"

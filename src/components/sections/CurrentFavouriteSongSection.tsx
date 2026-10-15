@@ -5,12 +5,12 @@ import { LabelTag } from "@/components/scrapbook/LabelTag";
 
 const favouriteSongs = [
   {
-    src: "/images/favourite-girl-that-i-am.png",
-    alt: "Girl That I Am by Ella Bright on Spotify",
+    src: "/images/favourite-so-good.png",
+    alt: "So Good (feat. Kendrick Lamar) by Jhené Aiko on Spotify",
   },
   {
-    src: "/images/favourite-boyfriend.png",
-    alt: "boyfriend (with Social House) by Ariana Grande on Spotify",
+    src: "/images/favourite-maahiya.png",
+    alt: "Maahiya by Akashdeep Sengupta on Spotify",
   },
 ] as const;
 

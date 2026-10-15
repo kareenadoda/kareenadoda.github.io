@@ -7,23 +7,6 @@ import { useMagnetic } from "@/lib/useMagnetic";
 
 const flowSpring = { type: "spring" as const, stiffness: 140, damping: 18, mass: 0.65 };
 
-type SkillGroup = "languagesAndTools" | "cloudAndAi";
-
-type SkillItem = { name: string; group: SkillGroup };
-
-const skillSections: { key: SkillGroup; label: string }[] = [
-  { key: "languagesAndTools", label: "Languages & Tools" },
-  { key: "cloudAndAi", label: "Cloud & AI" },
-];
-
-const allSkills: SkillItem[] = [
-  ...skills.languagesAndTools.map((name) => ({
-    name,
-    group: "languagesAndTools" as const,
-  })),
-  ...skills.cloudAndAi.map((name) => ({ name, group: "cloudAndAi" as const })),
-];
-
 export function SkillsChips() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -32,26 +15,16 @@ export function SkillsChips() {
       className="matte-paper border-soft-dashed p-4"
       onMouseLeave={() => setHoveredIndex(null)}
     >
-      {skillSections.map((section, sectionIndex) => (
-        <div key={section.key} className={sectionIndex > 0 ? "mt-4" : undefined}>
-          <p className="font-display text-xs font-bold uppercase tracking-wide text-[var(--color-muted)]">
-            {section.label}
-          </p>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {allSkills
-              .map((item, index) => ({ ...item, index }))
-              .filter((item) => item.group === section.key)
-              .map((item) => (
-                <SkillChip
-                  key={item.name}
-                  name={item.name}
-                  isActive={hoveredIndex === item.index}
-                  onHover={() => setHoveredIndex(item.index)}
-                />
-              ))}
-          </div>
-        </div>
-      ))}
+      <div className="flex flex-wrap gap-2">
+        {skills.map((name, index) => (
+          <SkillChip
+            key={name}
+            name={name}
+            isActive={hoveredIndex === index}
+            onHover={() => setHoveredIndex(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 }
@@ -87,13 +60,21 @@ function SkillChip({
         />
       )}
       <motion.span
-        className={`relative z-10 font-hand text-xs transition-colors duration-200 ${
-          isActive ? "font-semibold text-[var(--color-ink)]" : "text-[var(--color-muted)]"
-        }`}
+        className="relative z-10 inline-grid font-hand text-xs"
         animate={isActive ? { scale: 1.06, y: -1 } : { scale: 1, y: 0 }}
         transition={flowSpring}
       >
-        {name}
+        {/* Invisible bold copy reserves the hover width so chips don't reflow */}
+        <span className="invisible col-start-1 row-start-1 font-semibold" aria-hidden>
+          {name}
+        </span>
+        <span
+          className={`col-start-1 row-start-1 text-center transition-colors duration-200 ${
+            isActive ? "font-semibold text-[var(--color-ink)]" : "text-[var(--color-muted)]"
+          }`}
+        >
+          {name}
+        </span>
       </motion.span>
     </motion.span>
   );
