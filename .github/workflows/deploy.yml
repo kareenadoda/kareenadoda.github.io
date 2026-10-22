@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write # to delete the site artifact after deploying
 
 concurrency:
   group: pages
@@ -39,7 +40,12 @@ jobs:
             echo "::warning::RECRUITER_KEY secret or bundle missing; building example recruiter page only."
           fi
 
-      - run: npm run build
+      # Logs are public on this repo, so hide the private /for/<slug> routes
+      # that Next prints in its build summary.
+      - name: Build
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | sed -E 's#/for/[A-Za-z0-9_-]+#/for/<private>#g'
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
@@ -53,9 +59,17 @@ jobs:
             exit 1
           fi
 
-      - uses: actions/upload-pages-artifact@v3
+      # Same as actions/upload-pages-artifact, but without its verbose file
+      # listing (which would print the private /for/<slug> paths).
+      - name: Package site
+        run: tar --dereference --hard-dereference --directory out -cf "$RUNNER_TEMP/artifact.tar" --exclude=.git --exclude=.github .
+
+      - uses: actions/upload-artifact@v4
         with:
-          path: out
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
 
   deploy:
     needs: build
@@ -66,3 +80,13 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+      # Artifacts on a public repo are downloadable, and this one lists every
+      # private page, so remove it once the site is live.
+      - name: Delete site artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for id in $(gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts" -q '.artifacts[].id'); do
+            gh api -X DELETE "repos/${{ github.repository }}/actions/artifacts/$id"
+          done
