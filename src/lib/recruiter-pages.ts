@@ -18,8 +18,12 @@ export type RecruiterPage = {
   /** Unguessable URL segment, e.g. "examplecorp-a1b2c3d4". */
   slug: string;
   company: string;
+  /** Line under the "Kareena at <company>" heading; defaults to a short thank-you. */
+  intro?: string;
   /** Skills that matter at this company, and where Kareena learned each one. */
   skills: { skill: string; learnedAt: string; howItApplies: string }[];
+  /** Optional short intro to a project, shown just before the "fit" note. */
+  spotlight?: { title: string; body: string };
   /** Why Kareena would be a good fit at the company. Omit to skip that note. */
   fit?: { title: string; body: string }[];
   /** What Kareena has learned about the company so far, optionally with handwritten notes. */

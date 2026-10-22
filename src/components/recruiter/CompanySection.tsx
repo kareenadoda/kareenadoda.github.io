@@ -13,16 +13,24 @@ import type {
 export function CompanySection({ page }: { page: RecruiterPage }) {
   const notes: {
     title: string;
+    /** A short paragraph instead of bullets (used for the spotlight note). */
+    paragraph?: string;
     items: { lead: string; meta?: string; body: string; notes?: HandwrittenNotesData }[];
   }[] = [
     {
       title: "Skills I'd bring",
       items: page.skills.map((s) => ({
         lead: s.skill,
-        meta: `learned at ${s.learnedAt}`,
+        // "on a side project" keeps its own preposition; otherwise "learned at …"
+        meta: /^(on|in|at|from|during) /.test(s.learnedAt)
+          ? `learned ${s.learnedAt}`
+          : `learned at ${s.learnedAt}`,
         body: s.howItApplies,
       })),
     },
+    ...(page.spotlight
+      ? [{ title: page.spotlight.title, paragraph: page.spotlight.body, items: [] }]
+      : []),
     {
       title: `Why I'd be a good fit at ${page.company}`,
       items: (page.fit ?? []).map((f) => ({ lead: f.title, body: f.body })),
@@ -31,14 +39,14 @@ export function CompanySection({ page }: { page: RecruiterPage }) {
       title: `What I've learned about ${page.company}`,
       items: page.learned.map((l) => ({ lead: l.title, body: l.body, notes: l.notes })),
     },
-  ].filter((note) => note.items.length > 0); // skip sections a company has no entries for
+  ].filter((note) => note.paragraph || note.items.length > 0); // skip empty sections
 
   return (
     <div className="space-y-5">
       <SectionHeading>Kareena at {page.company}</SectionHeading>
 
       <p className="font-hand text-sm leading-relaxed text-[var(--color-muted)]">
-        A little page just for the {page.company} team. Thanks for stopping by!
+        {page.intro ?? `A little page just for the ${page.company} team. Thanks for stopping by!`}
       </p>
 
       <div className="space-y-4">
@@ -52,7 +60,12 @@ export function CompanySection({ page }: { page: RecruiterPage }) {
           >
             <StickyNote color={i % 2 === 0 ? "white" : "yellow"} className="!p-4">
               <h3 className="font-display text-lg font-bold">{note.title}</h3>
-              <ul className="mt-3 space-y-2.5">
+              {note.paragraph && (
+                <p className="mt-2 font-hand text-sm leading-relaxed text-[var(--color-muted)]">
+                  {note.paragraph}
+                </p>
+              )}
+              <ul className="mt-3 space-y-2.5 empty:hidden">
                 {note.items.map((item) => (
                   <li
                     key={item.lead}
