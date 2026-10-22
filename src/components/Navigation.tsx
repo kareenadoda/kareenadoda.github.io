@@ -12,12 +12,17 @@ const tabMatte: Record<SectionId, string> = {
   "geek-out": "matte-yellow",
 };
 
+/** "company" is the extra tab shown only on private recruiter pages. */
+export type TabId = SectionId | "company";
+
 type NavigationProps = {
-  active: SectionId;
-  onChange: (id: SectionId) => void;
+  active: TabId;
+  onChange: (id: TabId) => void;
+  /** Label for the extra company tab, e.g. "Kareena at Example Co". */
+  companyLabel?: string;
 };
 
-export function Navigation({ active, onChange }: NavigationProps) {
+export function Navigation({ active, onChange, companyLabel }: NavigationProps) {
   return (
     <nav className="flex flex-wrap justify-center gap-3 sm:gap-4">
       {sections.map((section, i) => {
@@ -33,6 +38,15 @@ export function Navigation({ active, onChange }: NavigationProps) {
           />
         );
       })}
+      {companyLabel && (
+        <NavTab
+          index={sections.length}
+          isActive={active === "company"}
+          label={companyLabel}
+          matteClass="matte-pink"
+          onClick={() => onChange("company")}
+        />
+      )}
     </nav>
   );
 }

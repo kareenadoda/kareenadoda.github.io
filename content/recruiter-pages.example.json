@@ -1,0 +1,9 @@
+[
+  {
+    "slug": "example-preview",
+    "company": "Example Co",
+    "skills": [{ "skill": "Placeholder", "learnedAt": "Placeholder", "howItApplies": "Placeholder." }],
+    "fit": [{ "title": "Placeholder", "body": "Placeholder." }],
+    "learned": [{ "title": "Placeholder", "body": "Placeholder." }]
+  }
+]

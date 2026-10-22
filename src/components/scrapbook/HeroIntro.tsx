@@ -6,6 +6,17 @@ import { WashiTape } from "./WashiTape";
 import { PhotoPolaroid } from "./PhotoPolaroid";
 import { profile, images } from "@/lib/profile";
 
+/**
+ * Company greetings ("Hi Example Company, I'm") stay on one line above
+ * "Kareena!", so longer ones step down in size to keep the cloud balanced.
+ */
+function eyebrowSize(text: string) {
+  if (text.length <= 10) return "text-2xl sm:text-3xl"; // "Hello, I'm"
+  if (text.length <= 16) return "text-xl sm:text-2xl"; // short company names
+  if (text.length <= 24) return "text-base sm:text-lg lg:text-xl"; // longer company names
+  return "text-sm sm:text-base lg:text-lg";
+}
+
 type HeroIntroProps = {
   eyebrow?: string;
   headline?: string;
@@ -32,7 +43,7 @@ export function HeroIntro({
               />
               <PinkBlob size="hero-xxl">
                 <motion.span
-                  className="font-hand text-2xl text-[var(--color-ink)]/90 sm:text-3xl"
+                  className={`whitespace-nowrap font-hand text-[var(--color-ink)]/90 ${eyebrowSize(eyebrow)}`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.15 }}

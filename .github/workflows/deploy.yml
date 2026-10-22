@@ -29,6 +29,16 @@ jobs:
 
       - run: npm ci
 
+      - name: Unpack private recruiter content
+        env:
+          RECRUITER_KEY: ${{ secrets.RECRUITER_KEY }}
+        run: |
+          if [ -n "$RECRUITER_KEY" ] && [ -f content/recruiter-private.enc ]; then
+            scripts/recruiter-bundle.sh unpack
+          else
+            echo "::warning::RECRUITER_KEY secret or bundle missing; building example recruiter page only."
+          fi
+
       - run: npm run build
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}

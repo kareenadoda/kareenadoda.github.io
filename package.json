@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "recruiter:pack": "scripts/recruiter-bundle.sh pack",
+    "recruiter:unpack": "scripts/recruiter-bundle.sh unpack",
+    "recruiter:set-key": "gh secret set RECRUITER_KEY < .recruiter-key"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.107.0",

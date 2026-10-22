@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import type { SectionId } from "@/lib/sections";
+import type { TabId } from "@/components/Navigation";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
@@ -26,12 +27,14 @@ const sectionNoteColor: Record<SectionId, "white" | "yellow" | "pink"> = {
 };
 
 type SectionPanelProps = {
-  active: SectionId;
+  active: TabId;
+  /** Content for the recruiter-only company tab. */
+  companySection?: React.ReactNode;
 };
 
-export function SectionPanel({ active }: SectionPanelProps) {
-  const Component = sectionComponents[active];
+export function SectionPanel({ active, companySection }: SectionPanelProps) {
   const isPinterest = active === "personal-life";
+  const Component = active === "company" ? null : sectionComponents[active];
 
   return (
     <AnimatePresence mode="popLayout" initial={false}>
@@ -43,7 +46,11 @@ export function SectionPanel({ active }: SectionPanelProps) {
         transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
         className="relative"
       >
-        {isPinterest ? (
+        {!Component ? (
+          <StickyNote color="pink" variant="plain" className="relative z-10">
+            {companySection}
+          </StickyNote>
+        ) : isPinterest ? (
           <div
             className="pin-board-shell matte-paper border-soft shadow-paper-sm relative z-10 bg-[var(--color-note-white)]"
             data-lenis-prevent
@@ -52,7 +59,7 @@ export function SectionPanel({ active }: SectionPanelProps) {
           </div>
         ) : (
           <StickyNote
-            color={sectionNoteColor[active]}
+            color={sectionNoteColor[active as SectionId]}
             variant="plain"
             tape={active === "geek-out"}
             tapeVariant="yellow"
