@@ -20,7 +20,9 @@ export function HomeView({ company }: HomeViewProps) {
   const [active, setActive] = useState<TabId>("about");
   const subtitle =
     active === "company" && company
-      ? `Skills, fit & what I've learned about ${company.company}`
+      ? company.learned.length > 0
+        ? `Skills, fit & what I've learned about ${company.company}`
+        : `Skills I'd bring to ${company.company}`
       : sections.find((s) => s.id === active)!.subtitle;
 
   return (

@@ -45,7 +45,7 @@ export function CompanySection({ page }: { page: RecruiterPage }) {
     <div className="space-y-5">
       <SectionHeading>Kareena at {page.company}</SectionHeading>
 
-      <p className="font-hand text-sm leading-relaxed text-[var(--color-muted)]">
+      <p className="font-hand text-base leading-relaxed text-[var(--color-muted)]">
         {page.intro ?? `A little page just for the ${page.company} team. Thanks for stopping by!`}
       </p>
 
@@ -61,7 +61,7 @@ export function CompanySection({ page }: { page: RecruiterPage }) {
             <StickyNote color={i % 2 === 0 ? "white" : "yellow"} className="!p-4">
               <h3 className="font-display text-lg font-bold">{note.title}</h3>
               {note.paragraph && (
-                <p className="mt-2 font-hand text-sm leading-relaxed text-[var(--color-muted)]">
+                <p className="mt-2 font-hand text-base leading-relaxed text-[var(--color-muted)]">
                   {note.paragraph}
                 </p>
               )}
@@ -69,7 +69,7 @@ export function CompanySection({ page }: { page: RecruiterPage }) {
                 {note.items.map((item) => (
                   <li
                     key={item.lead}
-                    className="font-hand text-sm leading-snug text-[var(--color-muted)] before:mr-1.5 before:content-['•']"
+                    className="font-hand text-base leading-snug text-[var(--color-muted)] before:mr-1.5 before:content-['•']"
                   >
                     <span className="font-display font-bold text-[var(--color-ink)]">
                       {item.lead}
