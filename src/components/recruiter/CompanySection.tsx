@@ -36,7 +36,7 @@ export function CompanySection({ page }: { page: RecruiterPage }) {
       items: (page.fit ?? []).map((f) => ({ lead: f.title, body: f.body })),
     },
     {
-      title: `What I've learned about ${page.company}`,
+      title: page.learnedTitle ?? `What I've learned about ${page.company}`,
       items: page.learned.map((l) => ({ lead: l.title, body: l.body, notes: l.notes })),
     },
   ].filter((note) => note.paragraph || note.items.length > 0); // skip empty sections

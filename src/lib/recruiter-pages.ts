@@ -20,12 +20,16 @@ export type RecruiterPage = {
   company: string;
   /** Line under the "Kareena at <company>" heading; defaults to a short thank-you. */
   intro?: string;
+  /** Line under the tabs when this tab is open; replaces the default summary. */
+  subtitle?: string;
   /** Skills that matter at this company, and where Kareena learned each one. */
   skills: { skill: string; learnedAt: string; howItApplies: string }[];
   /** Optional short intro to a project, shown just before the "fit" note. */
   spotlight?: { title: string; body: string };
   /** Why Kareena would be a good fit at the company. Omit to skip that note. */
   fit?: { title: string; body: string }[];
+  /** Heading for the "learned" note; defaults to "What I've learned about <company>". */
+  learnedTitle?: string;
   /** What Kareena has learned about the company so far, optionally with handwritten notes. */
   learned: { title: string; body: string; notes?: HandwrittenNotes }[];
 };
