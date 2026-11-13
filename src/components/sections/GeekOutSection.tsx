@@ -32,6 +32,11 @@ const rethinkFeatures: FeatureNote[] = [
 
 const loveFeatures: FeatureNote[] = [
   {
+    brand: "LinkedIn",
+    title: "New “Present” tag in Experiences",
+    body: "LinkedIn has just added a Present tag to highlight current experiences and I can't lie, I love this highlighting!",
+  },
+  {
     brand: "CLI tools",
     platform: "Terminal",
     title: "CLI tools feel more like text boxes",
@@ -77,7 +82,14 @@ That’s all I’ve tried so far - pretty good as of yet! I’m going to actuall
 ];
 
 // Tech I've read/learned about but haven't necessarily used yet.
-const learnedTech: FeatureNote[] = [];
+const learnedTech: FeatureNote[] = [
+  {
+    brand: "Hugging Face",
+    platform: "Course",
+    title: "Learning the basics of agents",
+    body: "Working through the basics on Hugging Face - agents, attention, embeddings, softmax and named entity recognition so far. Still completing it right now!",
+  },
+];
 
 type TabId = "features" | "tried" | "learned";
 
